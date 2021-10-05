@@ -1,0 +1,74 @@
+## 組み込みLSP
+[[plugins]]
+repo =  'neovim/nvim-lspconfig'
+on_ft = ['cpp','vim','lua']
+hook_source = "lua require('conf/nvim-lspconfig')"
+
+## Denoを使えるようにする
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+on_event = 'InsertEnter'
+
+
+
+####### ddc.vim 関連
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+on_source = 'denops.vim'
+depends = ['denops.vim']
+hook_source = 'runtime dein/conf/ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+on_source = 'ddc.vim'
+depends = ['ddc.vim','nvim-lspconfig']
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+on_source = 'ddc.vim'
+depends = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+on_source = 'ddc.vim'
+depends = 'ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+depends = 'ddc.vim'
+
+#######
+
+
+
+## シンタックスハイライトがすごいやつ
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_ft = ['cpp','vim','lua']
+hook_source = "lua require('conf/nvim-treesitter')"
+hook_post_update = 'TSUpdate'
+
+## Nyan Cat
+[[plugins]]
+repo = 'koron/nyancat-vim'
+on_event = 'InsertEnter'
+
+## Tomlファイルのシンタックスハイライトプラグイン
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+## SKKを使えるようにする
+[[plugins]]
+repo = 'vim-skk/denops-skkeleton.vim'
+on_source = 'denops.vim'
+hook_source = 'runtime dein/conf/skkeleton.vim'
+depends = 'denops.vim'
+
+## 括弧を補完してくれるすごいやつ
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+on_event = 'InsertEnter'
+hook_source = "lua require('conf/autopairs')"

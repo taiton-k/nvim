@@ -1,0 +1,58 @@
+# 外観のカスタマイズ
+
+###### アイコン
+
+[[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
+repo = 'yamatsum/nvim-nonicons'
+
+######
+
+
+
+## ステータスバー
+[[plugins]]
+repo = 'famiu/feline.nvim'
+hook_add = "lua require('conf/feline')"
+
+
+## タブバー
+[[plugins]]
+repo = 'akinsho/bufferline.nvim'
+hook_add = "lua require('conf/bufferline')"
+
+
+
+###### カラースキーム
+
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
+
+[[plugins]]
+repo = 'whatyouhide/vim-gotham'
+
+[[plugins]]
+repo = 'sainnhe/sonokai'
+
+[[plugins]]
+repo = 'kyazdani42/blue-moon'
+
+[[plugins]]
+repo = 'ChristianChiarulli/nvcode-color-schemes.vim'
+
+[[plugins]]
+repo = 'glepnir/zephyr-nvim'
+
+[[plugins]]
+repo = 'sainnhe/edge'
+
+[[plugins]]
+repo = 'marko-cerovac/material.nvim'
+
+##########
+
+
+
+
