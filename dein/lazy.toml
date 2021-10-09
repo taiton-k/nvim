@@ -2,7 +2,7 @@
 [[plugins]]
 repo =  'neovim/nvim-lspconfig'
 on_ft = ['cpp','vim','lua']
-hook_source = "lua require('conf/nvim-lspconfig')"
+hook_source = 'runtime conf/nvim-lspconfig.lua'
 
 ## Denoを使えるようにする
 [[plugins]]
@@ -57,7 +57,7 @@ depends = 'ddc.vim'
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 on_ft = ['cpp','vim','lua']
-hook_source = "lua require('conf/nvim-treesitter')"
+hook_source = 'runtime conf/nvim-treesitter.lua'
 hook_post_update = 'TSUpdate'
 
 ## Nyan Cat
@@ -81,4 +81,4 @@ depends = 'denops.vim'
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
-hook_source = "lua require('conf/autopairs')"
+hook_source = 'runtime conf/autopairs.lua'
