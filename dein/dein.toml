@@ -26,12 +26,9 @@ hook_add = 'set helplang=ja,en'
 
 [[plugins]]
 repo = 'kyazdani42/nvim-tree.lua'
-hook_source = '''
+hook_add = '''
 runtime conf/nvim-tree.vim
 lua require('conf/nvim-tree')
 '''
-
-[[plugins]]
-repo = 'kevinhwang91/rnvimr'
 
 ###########

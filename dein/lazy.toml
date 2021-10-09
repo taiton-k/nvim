@@ -13,6 +13,10 @@ on_event = 'InsertEnter'
 
 ####### ddc.vim 関連
 
+## ?
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 on_source = 'denops.vim'
@@ -36,6 +40,12 @@ depends = 'ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
+on_source = 'ddc.vim'
+depends = 'ddc.vim'
+
+# ファイルの補完
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
 on_source = 'ddc.vim'
 depends = 'ddc.vim'
 

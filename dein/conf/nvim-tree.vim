@@ -43,32 +43,32 @@ let g:nvim_tree_show_icons = {
 " default will show icon by default if no icon is provided
 " default shows no icon by default
 let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
+    \ 'default': ' ',
+    \ 'symlink': ' ',
     \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
+    \   'unstaged': "✗ ",
+    \   'staged': "✓ ",
     \   'unmerged': "",
     \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
+    \   'untracked': "★ ",
+    \   'deleted': " ",
     \   'ignored': "◌"
     \   },
     \ 'folder': {
     \   'arrow_open': "",
     \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
+    \   'default': " ",
+    \   'open': " ",
+    \   'empty': " ",
+    \   'empty_open': " ",
+    \   'symlink': " ",
+    \   'symlink_open': " ",
     \   },
     \   'lsp': {
-    \     'hint': "",
-    \     'info': "",
-    \     'warning': "",
-    \     'error': "",
+    \     'hint': " ",
+    \     'info': " ",
+    \     'warning': " ",
+    \     'error': " ",
     \   }
     \ }
 
