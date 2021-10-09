@@ -5,7 +5,7 @@ repo = 'Shougo/dein.vim'
 ## インデント
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
-hook_add = 'runtime conf/indent.lua'
+hook_add = 'runtime dein/conf/indent.lua'
 
 ## ウィンドウのリサイズを簡単にする
 [[plugins]]
@@ -27,8 +27,8 @@ hook_add = 'set helplang=ja,en'
 [[plugins]]
 repo = 'kyazdani42/nvim-tree.lua'
 hook_add = '''
-runtime conf/nvim-tree.vim
-runtime conf/nvim-tree.lua
+runtime dein/conf/nvim-tree.vim
+runtime dein/conf/nvim-tree.lua
 '''
 
 ###########

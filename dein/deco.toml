@@ -15,13 +15,13 @@ repo = 'yamatsum/nvim-nonicons'
 ## ステータスバー
 [[plugins]]
 repo = 'famiu/feline.nvim'
-hook_add = 'runtime conf/feline.lua'
+hook_add = 'runtime dein/conf/feline.lua'
 
 
 ## タブバー
 [[plugins]]
 repo = 'akinsho/bufferline.nvim'
-hook_add = 'runtime conf/bufferline.lua'
+hook_add = 'runtime dein/conf/bufferline.lua'
 
 
 
