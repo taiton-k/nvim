@@ -5,8 +5,8 @@
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
 
-[[plugins]]
-repo = 'yamatsum/nvim-nonicons'
+#[[plugins]]
+#repo = 'yamatsum/nvim-nonicons'
 
 ######
 

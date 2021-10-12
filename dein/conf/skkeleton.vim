@@ -7,5 +7,7 @@ let skkeleton#config = {
         \ 'remoteJisyoPort': '1178'
         \ }
 
-imap <C-j> <Plug>(skkeleton-enable)
+imap <silent><C-j> <Plug>(skkeleton-toggle)
+cmap <silent><C-j> <Plug>(skkeleton-toggle)
+
 
