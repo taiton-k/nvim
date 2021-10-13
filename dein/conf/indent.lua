@@ -41,8 +41,8 @@ require("indent_blankline").setup {
         },
         indent_level = 20,
         max_indent_increase = 1,
-        filetype_exclude = 'help',
-        buftype_exclude = 'terminal',
+        --filetype_exclude = 'help',
+        --buftype_exclude = 'terminal',
         --show_current_context = true,
         --[[context_highlight_list = {
                 "context1",
