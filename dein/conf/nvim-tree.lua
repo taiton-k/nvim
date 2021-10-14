@@ -1,25 +1,7 @@
-vim.g.nvim_tree_highlight_opened_files = 1 -- Enable highligting for opened folders and file icons
-vim.g.nvim_tree_quit_on_open = 1 -- close the tree when a file is opened
-vim.g.nvim_tree_indent_markers = 1 -- display indent markers when folders are open
-vim.g.nvim_tree_hide_dotfiles = 1 -- Not hide dotfiles
-vim.g.nvim_tree_group_empty = 0 -- folders that contain only one folder are grouped
-vim.g.nvim_tree_disable_window_picker = true -- disable the window picker
-vim.g.nvim_tree_window_picker_chars = "ASDFGHJKL1234567890" --  string of chars used as identifiers by the window picker
-
-
-require('nvim-tree').setup{
-        open_on_setup = true,
-        hijack_cursor = true, -- keeps the cursor on the first letter of the filename
-        update_cwd = true,
-        diagnostics = {
-                enable =true,
-        },
-}
-
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 local list = {
         -- cd in the above directory
-        { key = {"<CR>", "o", "l", "<2-LeftMouse>"}, cb = tree_cb("edit") },
+        { key = {"<CR>","o", "l", "<2-LeftMouse>"}, cb = tree_cb("edit") },
 
         -- will cd in the directory under the cursor
         { key = {"<2-RightMouse>", "<C-]>"},    cb = tree_cb("cd") },
@@ -43,10 +25,7 @@ local list = {
         { key = "P",                            cb = tree_cb("parent_node") },
 
         -- close current opened directory or parent
-        { key = "<BS>",                         cb = tree_cb("close_node") },
-
-        -- ???????????????
-        { key = "<S-CR>",                       cb = tree_cb("close_node") },
+        { key = "<BS>","h","<S-CR>",                         cb = tree_cb("close_node") },
 
         -- open the file as a preview
         { key = "<Tab>",                        cb = tree_cb("preview") },
@@ -113,4 +92,18 @@ local list = {
 
         -- see the help UI with keybindings
         { key = "g?",                           cb = tree_cb("toggle_help") },
+}
+
+require'nvim-tree'.setup{
+        hijack_cursor = true, -- keeps the cursor on the first letter of the filename
+        update_cwd = true,
+        diagnostics = {
+                enable =true,
+        },
+        view = {
+                mappings = {
+                        custom_only = true,
+                        list = list,
+                }
+        },
 }
