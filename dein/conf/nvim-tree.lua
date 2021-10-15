@@ -25,7 +25,7 @@ local list = {
         { key = "P",                            cb = tree_cb("parent_node") },
 
         -- close current opened directory or parent
-        { key = "<BS>","h","<S-CR>",                         cb = tree_cb("close_node") },
+        { key = {"<BS>","h","<S-CR>"},                         cb = tree_cb("close_node") },
 
         -- open the file as a preview
         { key = "<Tab>",                        cb = tree_cb("preview") },
