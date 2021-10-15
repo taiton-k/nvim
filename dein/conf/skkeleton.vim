@@ -1,5 +1,5 @@
 let skkeleton#config = {
-        \ 'globalJisyo': expand('~/.skk/SKK-JISYO.L'),
+        \ 'globalJisyo': expand('~/.config/skk/SKK-JISYO.L'),
         \ 'registerConvertResult': v:true,
         \ 'userJisyo': expand('~/.config/skk/my_jisyo'),
         \ 'remoteJisyo': v:true,

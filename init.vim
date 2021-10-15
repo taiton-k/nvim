@@ -9,7 +9,7 @@ runtime conf.vim
 
 runtime set.vim
 
-colorscheme nvcode
+colorscheme gotham
 
 
 
