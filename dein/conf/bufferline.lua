@@ -1,11 +1,11 @@
 require("bufferline").setup{
         options = {
                 -- Style
-                separator_style = "padded_slant",
+                separator_style = "thick",
 
                 -- Buffer Numbers setting For 8.2
                 numbers = function(opts)
-                        return string.format('%s', opts.ordinal)
+                        return string.format('%s.%s', opts.ordinal,opts.id)
                 end,
 
                 -- LSP Diafnostics
@@ -46,6 +46,20 @@ require("bufferline").setup{
                                 }
 
                         }
-                }
-        }
+                },
+
+                -- Sidebar offset
+                offsets = {
+                        {
+                                filetype = "NvimTree",
+                                text = function()
+                                        return vim.fn.getcwd()
+                                end,
+                                highlight = "Directory",
+                                text_align = "left"
+                        }
+                },
+        },
+
+        -- highlights
 }
