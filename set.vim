@@ -1,3 +1,4 @@
+" Vimに元から入ってるプラグインを無効化"
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
 let g:loaded_tarPlugin         = 1
@@ -13,6 +14,9 @@ let g:loaded_netrw             = 1
 let g:loaded_netrwPlugin       = 1
 let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
+
+" \ ←を押したときのインデント増加量を司る"
+let g:vim_indent_cont = 1
 
 set mouse+=a "マウスを有効化
 set number "今何行かを表示"

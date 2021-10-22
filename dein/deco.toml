@@ -51,6 +51,15 @@ repo = 'sainnhe/edge'
 [[plugins]]
 repo = 'marko-cerovac/material.nvim'
 
+[[plugins]]
+repo = 'vigoux/oak'
+
+[[plugins]]
+repo = 'yonlu/omni.vim'
+
+[[plugins]]
+repo = 'Shatur/neovim-ayu'
+
 ##########
 
 

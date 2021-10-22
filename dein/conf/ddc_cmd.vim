@@ -21,7 +21,7 @@ function! CommandlinePre() abort
         let s:prev_buffer_config = ddc#custom#get_buffer()
         call ddc#custom#patch_buffer('sources', ['cmdline-history','necovim', 'around'])
 
-        autocmd CmdlineLeave * ++once call CommandlinePost()
+        autocmd conf CmdlineLeave * ++once call CommandlinePost()
 
         " Enable command line completion
         call ddc#enable_cmdline_completion()
