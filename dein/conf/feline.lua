@@ -99,13 +99,19 @@ local highlights = {
                              'NONE'
                 }
         end,
+
+        inactive = {
+                fg = 'black',
+                bg = '#646464',
+                style = 'bold',
+        },
 }
 
 local components = {
         vi_mode = {
                 provider = 'vi_mode',
                 hl = highlights.vi_mode,
-                left_sep = 'block',
+                left_sep = '█',
                 right_sep = {
                         str = '',
                         hl = function()
@@ -241,6 +247,22 @@ local components = {
                 },
                 right_sep = '█',
         },
+
+
+        inactive = {
+                provider = 'INACTIVE',
+                hl = highlights.inactive,
+                left_sep = '█',
+                right_sep = {
+                        str = '',
+                        hl = function()
+                                return {
+                                        fg = highlights.inactive.bg,
+                                        bg = highlights.file.info().bg,
+                                }
+                        end,
+                },
+        }
 }
 
 
@@ -268,6 +290,9 @@ require('feline').setup {
                         },
                 },
                 inactive = {
+                        {
+                                components.inactive,
+                        },
                 },
         }
 }
