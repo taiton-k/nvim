@@ -23,6 +23,8 @@ hook_add = 'runtime dein/conf/feline.lua'
 repo = 'akinsho/bufferline.nvim'
 hook_add = 'runtime dein/conf/bufferline.lua'
 
+#[[plugins]]
+#repo = 'noib3/cokeline.nvim'
 
 
 ###### カラースキーム

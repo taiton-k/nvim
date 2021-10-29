@@ -1,6 +1,6 @@
 local color_table = {
         file_info = {
-                hl_modified = '#363636'
+                hl_modified = '#363654'
         },
         lsp = {
                 errors = 'Darkred',
@@ -38,6 +38,15 @@ local highlights = {
                                 },
                         }
                 end,
+                info_sp_inactive = function()
+                        return {
+                                str = '',
+                                hl = {
+                                        bg = 'NONE',
+                                        fg = vim.bo.modified and color_table.file_info.hl_modified or 'bg',
+                                },
+                        }
+                end,
         },
         lsp = {
                 errors = {
@@ -69,7 +78,9 @@ local highlights = {
                                 fg = color_table.lsp.hints,
                                 bg = require('feline.providers.lsp').diagnostics_exist('Warning') and
                                      color_table.lsp.warnings or
-                                     'NONE'
+                                     require('feline.providers.lsp').diagnostics_exist('Error') and
+                                     color_table.lsp.errors or
+                                    'NONE',
                         }
                 end,
                 info = {
@@ -80,8 +91,12 @@ local highlights = {
                         return {
                                 fg = color_table.lsp.info,
                                 bg = require('feline.providers.lsp').diagnostics_exist('Hint') and
-                                     color_table.lsp.hints,
-                                     'NONE'
+                                     color_table.lsp.hints or
+                                     require('feline.providers.lsp').diagnostics_exist('Warning') and
+                                     color_table.lsp.warnings or
+                                     require('feline.providers.lsp').diagnostics_exist('Error') and
+                                     color_table.lsp.errors or
+                                     'NONE',
                         }
                 end,
         },
@@ -102,7 +117,7 @@ local highlights = {
 
         inactive = {
                 fg = 'black',
-                bg = '#646464',
+                bg = '#727296',
                 style = 'bold',
         },
 }
@@ -133,11 +148,15 @@ local components = {
                         },
                         short_provider = 'file_info',
                         hl = highlights.file.info,
+                        truncate_hide = true,
+                        priority = 2,
                         left_sep = '█',
                         right_sep = highlights.file.info_sp,
                 },
                 size = {
                         provider = 'file_size',
+                        truncate_hide = true,
+                        priority = 1,
                         left_sep = ' ',
                         right_sep = {
                                 str = ' ',
@@ -148,6 +167,8 @@ local components = {
                 },
                 encoding = {
                         provider = 'file_encoding',
+                        truncate_hide = true,
+                        priority = 1,
                         left_sep = ' ',
                         right_sep = {
                                 str = '█',
@@ -218,6 +239,8 @@ local components = {
                         bg = 'bg',
                         fg = 'fg',
                 },
+                truncate_hide = true,
+                priority = -1,
                 left_sep = {
                         str = '█',
                         hl = highlights.position_sp,
@@ -230,6 +253,8 @@ local components = {
                         fg = 'fg',
                         bg = 'bg',
                 },
+                truncate_hide = true,
+                priority = 0,
                 left_sep = {
                         str = ' ',
                         hl = {
@@ -245,12 +270,16 @@ local components = {
                         fg = 'fg',
                         bg = 'bg',
                 },
+                truncate_hide = true,
+                priority = 0,
                 right_sep = '█',
         },
 
 
-        inactive = {
-                provider = 'INACTIVE',
+        type = {
+                provider = function()
+                        return vim.bo.filetype=='' and ( vim.bo.buftype=='' and  'INACTIVE' or vim.bo.buftype:upper() ) or vim.bo.filetype:upper()
+                end,
                 hl = highlights.inactive,
                 left_sep = '█',
                 right_sep = {
@@ -262,11 +291,31 @@ local components = {
                                 }
                         end,
                 },
-        }
+        },
+        file_info = {
+                provider = {
+                        name = 'file_info',
+                        opts = {
+                                type = 'relative_short',
+                        },
+                },
+                short_provider = 'file_info',
+                hl = highlights.file.info,
+                truncate_hide = true,
+                priority = 2,
+                left_sep = '█',
+                right_sep = highlights.file.info_sp_inactive,
+        },
 }
 
 
 require('feline').setup {
+        colors = {
+                bg = '#181836',
+                fg = '#EAEAFF',
+                black = '#000000',
+                green = '#608b4e',
+        },
         vi_mode_colors = {
                 ['COMMAND'] = 'yellow',
         },
@@ -291,8 +340,16 @@ require('feline').setup {
                 },
                 inactive = {
                         {
-                                components.inactive,
+                                components.type,
+                                components.file_info,
+                                {hl = {bg = 'NONE'}}
                         },
+                        {
+                                components.lsp.errors,
+                                components.lsp.warnings,
+                                components.lsp.hints,
+                                components.lsp.info,
+                        }
                 },
         }
 }

@@ -80,7 +80,7 @@ depends = ['ddc.vim']
 
 
 
-## シンタックスハイライトがすごいやつ
+## シンタックスハイライトをすごくしてくれる奴
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 on_ft = ['cpp','vim','lua']
@@ -109,3 +109,36 @@ depends = ['denops.vim']
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
 hook_source = 'runtime dein/conf/autopairs.lua'
+
+###### デバッグできるようにしてくれる奴
+[[plugins]]
+repo = 'mfussenegger/nvim-dap'
+on_ft = ['cpp']
+hook_source = 'runtime dein/conf/nvim-dap.lua'
+
+[[plugins]]
+repo = 'rcarriga/nvim-dap-ui'
+on_source = 'nvim-dap'
+depends = ['nvim-dap']
+
+[[plugins]]
+repo = 'theHamsta/nvim-dap-virtual-text'
+on_source = 'nvim-dap'
+depends = ['nvim-dap']
+
+#####
+
+
+####### Markdown
+
+## Markdownをプレビューできる奴
+[[plugins]]
+repo = 'kat0h/bufpreview.vim'
+on_ft = ['markdown']
+depends = ['denops.vim']
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
+on_ft = ['markdown']
+
+#####
