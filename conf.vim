@@ -19,7 +19,7 @@ nnoremap <silent>j gj
 nnoremap <silent>k gk
 
 " jj でノーマルモードに戻っちゃうんだぜ！"
-inoremap <silent> jj <esc> 
+"inoremap <silent> jj <esc> 
 "vnoremap <silent> jj <esc> 
 
 " ターミナルで Esc キー二度押しでノーマルモード！"
