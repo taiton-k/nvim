@@ -102,7 +102,7 @@ on_ft = ['toml']
 repo = 'vim-skk/denops-skkeleton.vim'
 on_source = 'denops.vim'
 hook_source = 'runtime dein/conf/skkeleton.vim'
-depends = ['denops.vim']
+depends = ['denops.vim','ddc.vim']
 
 ## 括弧を補完してくれるすごいやつ
 [[plugins]]
