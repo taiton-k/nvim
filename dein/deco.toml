@@ -29,8 +29,17 @@ hook_add = 'runtime dein/conf/bufferline.lua'
 
 ###### カラースキーム
 
+#[[plugins]]
+#repo = 'arcticicestudio/nord-vim'
+
 [[plugins]]
-repo = 'arcticicestudio/nord-vim'
+repo = 'shaunsingh/nord.nvim'
+hook_add = '''
+let g:nord_contrast = v:true
+let g:nord_borders = v:true
+let g:nord_disable_background = v:true
+let g:nord_cursorline_transparent = v:true
+'''
 
 [[plugins]]
 repo = 'whatyouhide/vim-gotham'
