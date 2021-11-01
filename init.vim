@@ -10,7 +10,7 @@ runtime set.vim
 
 runtime dein/dein.vim
 
-colorscheme nvcode
+colorscheme nord
 
 
 
