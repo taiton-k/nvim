@@ -7,7 +7,8 @@ hook_source = 'runtime dein/conf/nvim-lspconfig.lua'
 ## Denoを使えるようにする
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-on_event = 'InsertEnter'
+on_event = 'VimEnter'
+#on_ft = ['markdown']
 
 
 
@@ -16,12 +17,13 @@ on_event = 'InsertEnter'
 ## PopUp Menu  .vim
 [[plugins]]
 repo = 'Shougo/pum.vim'
+on_event = 'InsertEnter'
 
 # 新手の補完プラグイン
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 on_source = 'denops.vim'
-depends = ['denops.vim']
+depends = ['denops.vim','pum.vim']
 hook_source = 'runtime dein/conf/ddc.vim'
 hook_add = 'runtime dein/conf/ddc_cmd.vim'
 
@@ -137,6 +139,7 @@ repo = 'kat0h/bufpreview.vim'
 on_ft = ['markdown']
 depends = ['denops.vim']
 
+## 色々賢くしてくれる奴
 [[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = ['markdown']
