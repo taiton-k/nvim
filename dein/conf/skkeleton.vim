@@ -1,6 +1,6 @@
 let skkeleton#config = {
-        \ 'globalJisyo': expand('~/.config/skk/SKK-JISYO.L'),
-        \ 'userJisyo': expand('~/.config/skk/my_jisyo'),
+        \ 'globalJisyo': '~/.config/skk/SKK-JISYO.L',
+        \ 'userJisyo': '~/.config/skk/my_jisyo',
         \ 'immediatelyJisyoRW' : v:true,
         \ 'registerConvertResult': v:true,
         \ 'keepState' : v:true,

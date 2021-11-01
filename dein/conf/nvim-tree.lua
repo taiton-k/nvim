@@ -1,7 +1,6 @@
 vim.g.nvim_tree_highlight_opened_files = 3 -- Enable highligting for opened folders and file both icons and names
 vim.g.nvim_tree_quit_on_open = 1 -- close the tree when a file is opened
 vim.g.nvim_tree_indent_markers = 0 -- display indent markers when folders are open
-vim.g.nvim_tree_hide_dotfiles = 1 -- Not hide dotfiles
 vim.g.nvim_tree_group_empty = 0 -- folders that contain only one folder are grouped
 vim.g.nvim_tree_disable_window_picker = 1 -- disable the window picker
 vim.g.nvim_tree_window_picker_chars = "ASDFGHJKL1234567890" --  string of chars used as identifiers by the window picker
@@ -111,6 +110,7 @@ local list = {
 require'nvim-tree'.setup{
         hijack_cursor = true, -- keeps the cursor on the first letter of the filename
         update_cwd = true,
+        hide_dotfiles = 1, -- Not hide dotfiles
         diagnostics = {
                 enable =true,
         },

@@ -120,6 +120,15 @@ local highlights = {
                 bg = '#727296',
                 style = 'bold',
         },
+
+        line = {
+                fg = 'skyblue',
+                bg = 'NONE',
+        },
+        line_inactive = {
+                fg = 'green',
+                bg = 'NONE',
+        },
 }
 
 local components = {
@@ -306,12 +315,37 @@ local components = {
                 left_sep = '█',
                 right_sep = highlights.file.info_sp_inactive,
         },
+
+        line = {
+                -- provider = '─',
+                provider = '━',
+                hl = highlights.line,
+                truncate_hide = true,
+                priority = -8,
+        },
+        line_inactive = {
+                -- provider = '─',
+                provider = '━',
+                hl = highlights.line_inactive,
+                truncate_hide = true,
+                priority = -8,
+        },
+
 }
 
+local middle = {}
+for i=1 , 300 do
+        middle[i] = components.line
+end
+
+local middle_inactive = {}
+for i=1 , 300 do
+        middle_inactive[i] = components.line_inactive
+end
 
 require('feline').setup {
         colors = {
-                bg = '#181836',
+                bg = '#000000',
                 fg = '#EAEAFF',
                 black = '#000000',
                 green = '#608b4e',
@@ -326,8 +360,8 @@ require('feline').setup {
                                 components.file.info,
                                 components.file.size,
                                 components.file.encoding,
-                                {hl = {bg = 'NONE'}}
                         },
+                        middle,
                         {
                                 components.lsp.errors,
                                 components.lsp.warnings,
@@ -344,6 +378,7 @@ require('feline').setup {
                                 components.file_info,
                                 {hl = {bg = 'NONE'}}
                         },
+                        middle_inactive,
                         {
                                 components.lsp.errors,
                                 components.lsp.warnings,
