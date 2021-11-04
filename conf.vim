@@ -37,22 +37,56 @@ nnoremap <silent>k gk
 "vnoremap <silent> jj <esc> 
 
 
-" ターミナルで Esc キー二度押しでノーマルモード！"
-tnoremap <silent><Esc><Esc> <C-\><C-N>
+let s:TerminalWindowAlreadyOpened = v:false
+let s:TerminalBufferAlreadyExist = v:false
+let s:TerminalWinID = -1
+let s:TerminalBufnumber = -1
 
-" <Leader>t でターミナルを開く"
-nnoremap <silent><Leader>t <Cmd>T<CR>
+function! s:TerminalOpen() abort
+        let s:TerminalBufferAlreadyExist = bufexists(s:TerminalBufnumber)
+        botright split
+        if s:TerminalBufferAlreadyExist == v:true
+                execute 'buffer ' . s:TerminalBufnumber
+        else
+                edit term://fish
+        endif
+        resize 15
+        let s:TerminalWinID = win_getid()
+        let s:TerminalBufnumber = bufnr()
+        let s:TerminalWindowAlreadyOpened = v:true
+        let s:TerminalBufferAlreadyExist = v:true
+endfunction
 
+function! s:TerminalClose() abort
+        call win_execute(s:TerminalWinID,'close')
+        let s:TerminalWindowAlreadyOpened = v:false
+endfunction
+
+function! s:TerminalToggle() abort
+        if s:TerminalWindowAlreadyOpened == v:true
+                call s:TerminalClose()
+        else
+                call s:TerminalOpen()
+        endif
+endfunction
 
 " ターミナルを開いたとき、自動でインサートモードにする"
 "autocmd conf TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert
 
 " ターミナルが開かれたら、set nonumber する"
-autocmd conf TermOpen * set nonumber
+autocmd conf TermOpen * setlocal nonumber
 
 " T でターミナルを開く"
-command! T belowright new term://fish
+command! T call s:TerminalToggle()
+
+" ターミナルで Esc キー二度押しでノーマルモード！"
+tnoremap <silent><Esc><Esc> <C-\><C-N>
+
+" <C-t> でターミナルを開く"
+nnoremap <silent><C-t> <Cmd>T<CR>
+tnoremap <silent><C-t> <Cmd>T<CR>
+
 
 " ESCキー2度押しでハイライトの切り替え
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
