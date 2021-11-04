@@ -8,6 +8,8 @@ local color_table = {
                 hints = 'Darkorange',
                 info = 'cyan',
         },
+
+        inactive = '#727296',
 }
 local highlights = {
         vi_mode = function()
@@ -117,16 +119,18 @@ local highlights = {
 
         inactive = {
                 fg = 'black',
-                bg = '#727296',
+                bg = color_table.inactive,
                 style = 'bold',
         },
 
-        line = {
-                fg = 'skyblue',
-                bg = 'NONE',
-        },
+        line = function()
+                return {
+                        fg = require('feline.providers.vi_mode').get_mode_color(),
+                        bg = 'NONE',
+                }
+        end,
         line_inactive = {
-                fg = 'green',
+                fg = color_table.inactive,
                 bg = 'NONE',
         },
 }
@@ -317,15 +321,15 @@ local components = {
         },
 
         line = {
-                -- provider = '─',
-                provider = '━',
+                provider = '─',
+                --provider = '━',
                 hl = highlights.line,
                 truncate_hide = true,
                 priority = -8,
         },
         line_inactive = {
-                -- provider = '─',
-                provider = '━',
+                provider = '─',
+                --provider = '━',
                 hl = highlights.line_inactive,
                 truncate_hide = true,
                 priority = -8,
