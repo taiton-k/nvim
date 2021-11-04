@@ -4,12 +4,15 @@ vim.g.nvim_tree_indent_markers = 0 -- display indent markers when folders are op
 vim.g.nvim_tree_group_empty = 0 -- folders that contain only one folder are grouped
 vim.g.nvim_tree_disable_window_picker = 1 -- disable the window picker
 vim.g.nvim_tree_window_picker_chars = "ASDFGHJKL1234567890" --  string of chars used as identifiers by the window picker
+--
 
 -- nnoremap <Leader>f :NvimTreeToggle<CR>
 vim.api.nvim_set_keymap('n', '<Leader>f', '<Cmd>NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- autocmd conf FileType NvimTree setlocal tabstop=2 shiftwidth=2
 vim.cmd[[autocmd conf FileType NvimTree setlocal tabstop=2 shiftwidth=2]]
+-- 何が目的なのかを説明しづらいな…この設定
+vim.cmd[[autocmd conf FileType NvimTree autocmd! DirChanged * tcd %:h]]
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 local list = {
@@ -108,8 +111,18 @@ local list = {
 }
 
 require'nvim-tree'.setup{
+        disable_netrw = true, -- completely disable netrw
+        hijack_netrw = true, -- hijack netrw windows
         hijack_cursor = true, -- keeps the cursor on the first letter of the filename
         update_cwd = true,
+        update_to_buf_dir = { -- hijacks new directory buffers when they are opened
+                enable = true,
+                auto_open = true,
+        },
+        --update_focused_file = {
+        --        enable = true,
+        --        update_cwd = true,
+        --},
         hide_dotfiles = 1, -- Not hide dotfiles
         diagnostics = {
                 enable =true,
