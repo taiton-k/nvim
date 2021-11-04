@@ -1,12 +1,9 @@
-scriptencoding utf-8
 set encoding=utf-8
-
-" Feline.vim にどうしても前書きが必要みたい"
-set termguicolors
-
-runtime conf.vim
+scriptencoding utf-8
 
 runtime set.vim
+
+runtime conf.vim
 
 runtime dein/dein.vim
 
