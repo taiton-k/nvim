@@ -50,6 +50,7 @@ set hlsearch " 検索結果をハイライト
 
 
 set termguicolors    " ターミナルでも True Color を使えるようにする。
+
 set pumblend=25     " ポップアップメニューの透明度
 set pumheight=15     " ポップアップメニューの高さ
 
