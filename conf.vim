@@ -15,6 +15,11 @@ autocmd conf ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
 " Markdown のファイルが開かれたら、set wrap する"
 autocmd conf FileType markdown set wrap
 
+" Markdown ファイルのハイライトの設定"
+autocmd conf FileType markdown highlight link markdownCodeDelimiter Comment
+autocmd conf FileType markdown highlight link markdownCodeBlock String
+autocmd conf FileType markdown highlight link markdownCode String
+
 " Leader キーにスペースを割り当てる"
 let mapleader = "\<Space>"
 
@@ -35,8 +40,16 @@ nnoremap <silent>k gk
 " ターミナルで Esc キー二度押しでノーマルモード！"
 tnoremap <silent><Esc><Esc> <C-\><C-N>
 
+" <Leader>t でターミナルを開く"
+nnoremap <silent><Leader>t <Cmd>T<CR>
+
+
 " ターミナルを開いたとき、自動でインサートモードにする"
-autocmd conf TermOpen * startinsert
+"autocmd conf TermOpen * startinsert
+autocmd BufEnter * if &buftype == 'terminal' | startinsert
+
+" ターミナルが開かれたら、set nonumber する"
+autocmd conf TermOpen * set nonumber
 
 " T でターミナルを開く"
 command! T belowright new term://fish
