@@ -96,3 +96,10 @@ command! OjTest belowright new term:// oj t -N -d tests
 command! Compile !g++ -Wall -Wextra -Werror %
 command! Submit belowright new term:// acc submit
 command! Apply runtime init.vim
+
+
+" 実験"
+"autocmd conf InsertEnter * echomsg "InsertEnter"
+"autocmd conf InsertChange echomsg "InsertChange"
+autocmd conf InsertEnter * normal <CR>a
+
