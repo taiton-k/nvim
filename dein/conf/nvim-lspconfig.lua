@@ -7,6 +7,8 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local lspconfig = require'lspconfig'
+
+-------------- Lua
 lspconfig.sumneko_lua.setup {
         cmd = {
                 sumneko_binary,
@@ -36,6 +38,11 @@ lspconfig.sumneko_lua.setup {
                 },
         },
 }
+
+---------
+
+
+---------- C++
 lspconfig.ccls.setup {
         init_options = {
                 cache = {
@@ -44,5 +51,15 @@ lspconfig.ccls.setup {
         }
 }
 
+---------
+
+---- Vim script
 lspconfig.vimls.setup{}
+
+
+---- TypeScript
+--lspconfig.tsserver.setup{}
+--
+---- Deno
+lspconfig.denols.setup{}
 
