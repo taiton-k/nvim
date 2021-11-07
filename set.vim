@@ -63,7 +63,7 @@ set clipboard+=unnamedplus "yank した文字列をクリップボードにコ�
 set wrapscan " 一番下までいったら上まで戻る
 
 set showtabline=2 " 常にタブページのラベルを表示
-set noshowmode " モードの表記を消す
+"set noshowmode " モードの表記を消す
 
 set list " 空白文字の可視化"
 set listchars=eol:↴
@@ -73,5 +73,9 @@ set cursorline " カーソルのある行を強調表示
 
 set whichwrap=b,s,h,l,[,],<,>,~ " カーソルの回り込みをできるようにする"
 
-" エラーの表示を行番号に被せる"
+" エラーとかの表示を行番号に被せる"
 set signcolumn=number
+
+
+" denops.vimのデバッグモードをオンにする"
+"let g:denops#debug = 1
