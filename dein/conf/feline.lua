@@ -1,54 +1,70 @@
+local nord = {
+        --16 colors
+        bg = "#2E3440",-- nord0
+        mode_fg = "#0E1420",
+        white = '#FFFFFF',
+        nord1 = "#3B4252",
+        nord2_gui = "#434C5E",
+        nord3 = "#4C566A",
+        --nord3_gui_bright = "#616E88" ,
+        normal = "#D8DEE9",--nord4
+        nord5_gui = "#E5E9F0",
+        fg = "#ECEFF4",
+        nord7_gui = "#8FBCBB",
+        skyblue = "#88C0D0",
+        oceanblue = "#81A1C1"        ,
+        nord10 = "#5E81AC"       ,
+        red = "#BF616A"       ,
+        orange = "#D08770"       ,
+        yellow = "#EBCB8B"       ,
+        green = "#A3BE8C"       ,
+        violet = "#B48EAD"       ,
+        none =          'NONE'
+}
+
+
 local color_table = {
-        file_info = {
-                hl_modified = '#363654'
-        },
         lsp = {
-                errors = 'Darkred',
-                warnings = 'Darkyellow',
-                hints = 'Darkorange',
-                info = 'cyan',
+                errors = 'red',
+                warnings = 'Orange',
+                hints = 'LightBlue',
+                info = '#81A1C1',
         },
 
-        inactive = '#727296',
+        inactive = 'oceanblue',
 }
+
 local highlights = {
         vi_mode = function()
                 return{
                         bg = require('feline.providers.vi_mode').get_mode_color(),
-                        fg = 'black',
+                        fg = 'mode_fg',
                         style = 'bold',
                 }
         end,
         file = {
-                info = function()
-                        return {
-                                bg = vim.bo.modified and color_table.file_info.hl_modified or 'bg',
+                info = {
+                        bg = 'bg',
+                        fg = 'fg'
+                },
+                info_sp = {
+                        str = '',
+                        hl = {
                                 fg = 'fg',
-                        }
-                end,
-                info_sp = function()
-                        return vim.bo.modified and {
-                                str = '',
-                                hl = {
-                                        bg = 'bg',
-                                        fg = color_table.file_info.hl_modified,
-                                }
-                        } or {
-                                str = '',
-                                hl = {
-                                        fg = 'fg',
-                                },
-                        }
-                end,
-                info_sp_inactive = function()
-                        return {
-                                str = '',
-                                hl = {
-                                        bg = 'NONE',
-                                        fg = vim.bo.modified and color_table.file_info.hl_modified or 'bg',
-                                },
-                        }
-                end,
+                        },
+                        always_visible = true,
+                },
+                modified = {
+                        fg = 'orange',
+                        bg = 'bg',
+                },
+                info_sp_inactive = {
+                        str = '',
+                        hl = {
+                                bg = 'NONE',
+                                fg = 'bg',
+                        },
+                },
         },
         lsp = {
                 errors = {
@@ -116,6 +132,9 @@ local highlights = {
                              'NONE'
                 }
         end,
+        scroll_bar = {
+                fg = 'violet',
+        },
 
         inactive = {
                 fg = 'black',
@@ -133,6 +152,11 @@ local highlights = {
                 fg = color_table.inactive,
                 bg = 'NONE',
         },
+
+        normal = {
+                bg = 'bg',
+                fg = 'fg',
+        },
 }
 
 local components = {
@@ -145,7 +169,7 @@ local components = {
                         hl = function()
                                 return {
                                         fg = highlights.vi_mode().bg,
-                                        bg = highlights.file.info().bg,
+                                        bg = highlights.file.info.bg,
                                 }
                         end,
                 },
@@ -156,14 +180,22 @@ local components = {
                         provider = {
                                 name = 'file_info',
                                 opts = {
-                                        type = 'relative_short',
+                                        file_modified_icon = "",
+                                        file_readonly_icon = "🔒 ",
+                                        type = 'relative',
                                 },
                         },
-                        short_provider = 'file_info',
                         hl = highlights.file.info,
                         truncate_hide = true,
                         priority = 2,
                         left_sep = '█',
+                },
+                modified = {
+                        provider = function()
+                                return vim.bo.modified and '● ' or ''
+                        end,
+                        hl = highlights.file.modified,
+                        priority = 2,
                         right_sep = highlights.file.info_sp,
                 },
                 size = {
@@ -248,10 +280,7 @@ local components = {
         },
         position = {
                 provider = 'position',
-                hl = {
-                        bg = 'bg',
-                        fg = 'fg',
-                },
+                hl = highlights.normal,
                 truncate_hide = true,
                 priority = -1,
                 left_sep = {
@@ -262,10 +291,7 @@ local components = {
         },
         percentage = {
                 provider = 'line_percentage',
-                hl = {
-                        fg = 'fg',
-                        bg = 'bg',
-                },
+                hl = highlights.normal,
                 truncate_hide = true,
                 priority = 0,
                 left_sep = {
@@ -279,10 +305,7 @@ local components = {
         },
         scroll_bar = {
                 provider = 'scroll_bar',
-                hl = {
-                        fg = 'fg',
-                        bg = 'bg',
-                },
+                hl = highlights.scroll_bar,
                 truncate_hide = true,
                 priority = 0,
                 right_sep = '█',
@@ -300,7 +323,7 @@ local components = {
                         hl = function()
                                 return {
                                         fg = highlights.inactive.bg,
-                                        bg = highlights.file.info().bg,
+                                        bg = highlights.file.info.bg,
                                 }
                         end,
                 },
@@ -348,12 +371,15 @@ for i=1 , 300 do
 end
 
 require('feline').setup {
-        colors = {
+        --[[colors = {
                 bg = '#000000',
                 fg = '#EAEAFF',
                 black = '#000000',
+                red = '#BF616A',
                 green = '#608b4e',
-        },
+                yellow = '#EBCB8B',
+        },]]
+        colors = nord,
         vi_mode_colors = {
                 ['COMMAND'] = 'yellow',
         },
@@ -362,6 +388,7 @@ require('feline').setup {
                         {
                                 components.vi_mode,
                                 components.file.info,
+                                components.file.modified,
                                 components.file.size,
                                 components.file.encoding,
                         },
