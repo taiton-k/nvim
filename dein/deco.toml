@@ -26,6 +26,16 @@ hook_add = 'runtime dein/conf/bufferline.lua'
 #[[plugins]]
 #repo = 'noib3/cokeline.nvim'
 
+#[[plugins]]
+#repo = 'nvim-lualine/lualine.nvim'
+#hook_add = '''
+#lua << EOF
+#require('lualine').setup{
+#        options = {theme = 'nord'}
+#}
+#EOF
+#'''
+
 
 ###### カラースキーム
 
