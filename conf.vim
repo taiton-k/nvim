@@ -10,7 +10,6 @@ autocmd conf ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
 autocmd conf ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
 autocmd conf ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
 autocmd conf ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
-autocmd conf ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
 
 " Markdown のファイルが開かれたら、set wrap する"
 autocmd conf FileType markdown set wrap
@@ -48,7 +47,8 @@ function! s:TerminalOpen() abort
         if s:TerminalBufferAlreadyExist == v:true
                 execute 'buffer ' . s:TerminalBufnumber
         else
-                edit term://fish
+                "execute 'edit term://' . exepath('fish')
+                terminal
         endif
         resize 15
         let s:TerminalWinID = win_getid()
@@ -73,6 +73,9 @@ endfunction
 " ターミナルを開いたとき、自動でインサートモードにする"
 "autocmd conf TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert
+
+" ターミナルの背景を透明にする"
+autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
 
 " ターミナルが開かれたら、set nonumber する"
 autocmd conf TermOpen * setlocal nonumber
