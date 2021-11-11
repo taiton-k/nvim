@@ -1,3 +1,4 @@
+set guifont=HackGenNerd\ Console:h7
 " Vimに元から入ってるプラグインを無効化"
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
@@ -53,6 +54,8 @@ set termguicolors    " ターミナルでも True Color を使えるようにす
 
 set pumblend=25     " ポップアップメニューの透明度
 set pumheight=15     " ポップアップメニューの高さ
+
+set winblend=25 " ウィンドウも透明にする"
 
 set hidden " バッファを切り替えても「ファイルが保存されてないよ！」っていうエラーを出さないようにする"
 
