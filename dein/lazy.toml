@@ -18,6 +18,7 @@ on_event = 'VimEnter'
 [[plugins]]
 repo = 'Shougo/pum.vim'
 on_event = 'InsertEnter'
+hook_source = 'runtime dein/conf/pum.vim'
 
 # 新手の補完プラグイン
 [[plugins]]
