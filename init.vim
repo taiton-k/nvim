@@ -7,6 +7,10 @@ runtime conf.vim
 
 runtime dein/dein.vim
 
+if exists('g:nvui')
+        runtime nvui.vim
+endif
+
 colorscheme nord
 
 
