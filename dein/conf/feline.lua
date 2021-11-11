@@ -64,6 +64,7 @@ local highlights = {
                                 bg = 'NONE',
                                 fg = 'bg',
                         },
+                        always_visible = true,
                 },
         },
         lsp = {
@@ -332,14 +333,22 @@ local components = {
                 provider = {
                         name = 'file_info',
                         opts = {
+                                file_modified_icon = "",
+                                file_readonly_icon = "🔒 ",
                                 type = 'relative_short',
                         },
                 },
-                short_provider = 'file_info',
                 hl = highlights.file.info,
                 truncate_hide = true,
                 priority = 2,
                 left_sep = '█',
+        },
+        file_modified = {
+                provider = function()
+                        return vim.bo.modified and '● ' or ''
+                end,
+                hl = highlights.file.modified,
+                priority = 2,
                 right_sep = highlights.file.info_sp_inactive,
         },
 
@@ -407,6 +416,7 @@ require('feline').setup {
                         {
                                 components.type,
                                 components.file_info,
+                                components.file_modified,
                                 {hl = {bg = 'NONE'}}
                         },
                         middle_inactive,
