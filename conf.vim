@@ -12,7 +12,7 @@ autocmd conf ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
 autocmd conf ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
 
 " Markdown のファイルが開かれたら、set wrap する"
-autocmd conf FileType markdown set wrap
+autocmd conf FileType markdown setlocal wrap
 
 " Markdown ファイルのハイライトの設定"
 autocmd conf FileType markdown highlight link markdownCodeDelimiter Comment
@@ -71,7 +71,7 @@ function! s:TerminalToggle() abort
 endfunction
 
 " ターミナルを開いたとき、自動でインサートモードにする"
-"autocmd conf TermOpen * startinsert
+autocmd conf TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert
 
 " ターミナルの背景を透明にする"
@@ -100,9 +100,13 @@ command! Compile !g++ -Wall -Wextra %
 command! Submit belowright new term:// acc submit
 command! Apply runtime init.vim
 
+command! -nargs=* H vert help <args>
+
 
 " 実験"
 "autocmd conf InsertEnter * echomsg "InsertEnter"
 "autocmd conf InsertChange echomsg "InsertChange"
 "autocmd conf InsertEnter * normal <CR>a
+
+autocmd conf BufNewFile,BufRead *.vert,*.tesc,*.tese,*.glsl,*.geom,*.frag,*.comp,*.vs,*.fs, setlocal filetype=glsl
 
