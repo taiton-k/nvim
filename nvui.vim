@@ -1,4 +1,9 @@
-"set guifont=HackGenNerd\ Console:h9
+NvuiAnimationsEnabled v:true
+
+"set guifont=HackGen\ Console:h10
+set guifont=PlemolJP\ Console\ NF:h10
+NvuiCharspace 0
+
 NvuiOpacity 0.8
 NvuiCursorHideWhileTyping v:true
 
@@ -14,8 +19,9 @@ NvuiScrollFrametime 3
 NvuiMoveAnimationDuration 0.2
 NvuiMoveAnimationFrametime 3
 
-
+NvuiCursorScaler expo
 NvuiCursorAnimationDuration 0.3
+NvuiCursorFrametime 3
 
 
 

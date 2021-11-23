@@ -1,4 +1,4 @@
-set guifont=HackGenNerd\ Console:h7
+"set guifont=HackGenNerd\ Console:h8
 " Vimに元から入ってるプラグインを無効化"
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
@@ -69,7 +69,7 @@ set showtabline=2 " 常にタブページのラベルを表示
 "set noshowmode " モードの表記を消す
 
 set list " 空白文字の可視化"
-set listchars=eol:↴
+set listchars=eol:↴ 
 
 set cursorline " カーソルのある行を強調表示
 "set cursorcolumn " カーソルのある列を強調表示
@@ -81,4 +81,4 @@ set signcolumn=number
 
 
 " denops.vimのデバッグモードをオンにする"
-"let g:denops#debug = 1
+let g:denops#debug = 1
