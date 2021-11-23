@@ -1,20 +1,15 @@
--- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
-
+-------------- Lua
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 local lspconfig = require'lspconfig'
 
--------------- Lua
 lspconfig.sumneko_lua.setup {
         cmd = {
-                sumneko_binary,
-                "-E",
-                sumneko_root_path .. "/main.lua"
-        };
+                'lua-language-server',
+                '-E',
+        },
         settings = {
                 Lua = {
                         runtime = {
@@ -44,11 +39,20 @@ lspconfig.sumneko_lua.setup {
 
 ---------- C++
 lspconfig.ccls.setup {
+        single_file_support = true,
+        root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", "compile_flags.txt", ".git","./") or lspconfig.util.dirname,
         init_options = {
                 cache = {
-                        directory = ".ccls-cache";
-                };
-        }
+                        directory = "/tmp/.ccls-cache";
+                },
+                compilationDatabaseDirectory = "build";
+                index = {
+                        threads = 0;
+                },
+                clang = {
+                        excludeArgs = { "-frounding-math"} ;
+                },
+        },
 }
 
 ---------
@@ -63,3 +67,21 @@ lspconfig.vimls.setup{}
 ---- Deno
 lspconfig.denols.setup{}
 
+
+----GLSL
+local configs = require 'lspconfig/configs'
+configs.glslls = {
+        default_config = {
+                cmd = {
+                        'glslls',
+                        '--stdin',
+                },
+                filetypes = {'glsl'},
+                root_dir = lspconfig.util.root_pattern('./'),
+                single_file_support = true,
+        }
+}
+
+configs.glslls.setup{}
+
+-----

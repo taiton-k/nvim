@@ -18,7 +18,11 @@ on_event = 'VimEnter'
 [[plugins]]
 repo = 'Shougo/pum.vim'
 on_event = 'InsertEnter'
-hook_source = 'runtime dein/conf/pum.vim'
+hook_source = '''
+if ! exists('g:nvui') 
+        runtime dein/conf/pum.vim
+endif
+'''
 
 # 新手の補完プラグイン
 [[plugins]]
@@ -86,7 +90,7 @@ depends = ['ddc.vim']
 ## シンタックスハイライトをすごくしてくれる奴
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-on_ft = ['cpp','vim','lua']
+on_ft = ['cpp','vim','lua','typescript','glsl']
 hook_source = 'runtime dein/conf/nvim-treesitter.lua'
 hook_post_update = 'TSUpdate'
 
