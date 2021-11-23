@@ -41,20 +41,6 @@ call ddc#custom#patch_global('sourceOptions', {
         \ 'cmdline-history': {'mark': 'history'},
         \ })
 
-" Skkleleton が有効なときのみ Skkleleton のソースを有効にする"
-autocmd conf User skkeleton-enable-pre call s:skkeleton_pre()
-function! s:skkeleton_pre() abort
-        " Overwrite sources
-        let s:prev_buffer_config = ddc#custom#get_buffer()
-        call ddc#custom#patch_buffer('sources', ['skkeleton'])
-endfunction
-autocmd conf User skkeleton-disable-pre call s:skkeleton_post()
-function! s:skkeleton_post() abort
-        " Restore sources
-        call ddc#custom#set_buffer(s:prev_buffer_config)
-endfunction
-
-
 " 補完が発火するタイミング
 call ddc#custom#patch_global('autoCompleteEvents', [
         \ 'InsertEnter', 'TextChangedI', 'TextChangedP',
@@ -66,6 +52,10 @@ call ddc#custom#patch_global('backspaceCompletion', v:true)
 
 " 補完ウィンドウをpum.vimのにする
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
+
+
+        " Use ddc.
+        call ddc#enable()
 
 " Mappings
 
@@ -88,12 +78,21 @@ inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 "inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
 
 
+" Skkleleton が有効なときのみ Skkleleton のソースを有効にする"
+autocmd! conf User skkeleton-enable-pre call s:skkeleton_pre()
+function! s:skkeleton_pre() abort
+        " Overwrite sources
+        let s:prev_buffer_config = ddc#custom#get_buffer()
+        call ddc#custom#patch_buffer('sources', ['skkeleton'])
+endfunction
+autocmd! conf User skkeleton-disable-pre call s:skkeleton_post()
+function! s:skkeleton_post() abort
+        " Restore sources
+        call ddc#custom#set_buffer(s:prev_buffer_config)
+endfunction
 
 
 
 
-
-" Use ddc.
-call ddc#enable()
 
 

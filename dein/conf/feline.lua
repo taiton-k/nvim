@@ -12,14 +12,14 @@ local nord = {
         fg = "#ECEFF4",
         nord7_gui = "#8FBCBB",
         skyblue = "#88C0D0",
-        oceanblue = "#81A1C1"        ,
-        nord10 = "#5E81AC"       ,
-        red = "#BF616A"       ,
-        orange = "#D08770"       ,
-        yellow = "#EBCB8B"       ,
-        green = "#A3BE8C"       ,
-        violet = "#B48EAD"       ,
-        none =          'NONE'
+        oceanblue = "#81A1C1",
+        nord10 = "#5E81AC",
+        red = "#BF616A",
+        orange = "#D08770",
+        yellow = "#EBCB8B",
+        green = "#A3BE8C",
+        violet = "#B48EAD" ,
+        none =  'NONE'
 }
 
 
@@ -193,7 +193,7 @@ local components = {
                 },
                 modified = {
                         provider = function()
-                                return vim.bo.modified and '● ' or ''
+                                return vim.bo.modified and '●  ' or ''
                         end,
                         hl = highlights.file.modified,
                         priority = 2,
@@ -353,15 +353,17 @@ local components = {
         },
 
         line = {
-                provider = '─',
+                --provider = '─',
+                provider = '—',
                 --provider = '━',
                 hl = highlights.line,
                 truncate_hide = true,
                 priority = -8,
         },
         line_inactive = {
-                provider = '─',
+                --provider = '─',
                 --provider = '━',
+                provider = '—',
                 hl = highlights.line_inactive,
                 truncate_hide = true,
                 priority = -8,
