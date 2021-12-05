@@ -23,13 +23,16 @@ autocmd conf FileType markdown highlight link markdownCode String
 let mapleader = "\<Space>"
 
 " 全選択"
-nnoremap <silent><Leader>a ggVG
+nnoremap <silent> <Leader>a ggVG
 
 
 
 " set wrap されてても見ため通りに動く"
-nnoremap <silent>j gj
-nnoremap <silent>k gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+
+nnoremap <silent> <Leader>w <Cmd>update<CR>
+nnoremap <silent> <Leader>W <Cmd>write<CR>
 
 " jj でノーマルモードに戻っちゃうんだぜ！"
 "inoremap <silent> jj <esc> 
@@ -101,6 +104,10 @@ command! Submit belowright new term:// acc submit
 command! Apply runtime init.vim
 
 command! -nargs=* H vert help <args>
+
+" For OpenGL Programming
+command! -nargs=* Make !make <args>
+command! Execute !./a.out
 
 
 " 実験"

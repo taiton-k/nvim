@@ -1,7 +1,7 @@
 ## 組み込みLSP
 [[plugins]]
 repo =  'neovim/nvim-lspconfig'
-on_ft = ['cpp','vim','lua']
+on_ft = ['cpp','vim','lua','typescript','glsl']
 hook_source = 'runtime dein/conf/nvim-lspconfig.lua'
 
 ## Denoを使えるようにする
@@ -82,6 +82,10 @@ repo = 'Shougo/ddc-converter_remove_overlap'
 on_source = 'ddc.vim'
 depends = ['ddc.vim']
 
+[[plugins]]
+repo = 'tani/ddc-fuzzy'
+on_source = 'ddc.vim'
+depends = ['ddc.vim']
 
 #######
 

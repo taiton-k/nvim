@@ -69,19 +69,25 @@ lspconfig.denols.setup{}
 
 
 ----GLSL
-local configs = require 'lspconfig/configs'
+
+local configs = require('lspconfig.configs')
 configs.glslls = {
         default_config = {
                 cmd = {
                         'glslls',
                         '--stdin',
+                        --'-p',
+                        --'-v',
+                        --'-l',
+                        --'glslls.log',
                 },
                 filetypes = {'glsl'},
                 root_dir = lspconfig.util.root_pattern('./'),
+                --root_dir = function () return lspconfig.util.root_pattern('./') end,
                 single_file_support = true,
         }
 }
 
-configs.glslls.setup{}
+lspconfig.glslls.setup{}
 
 -----

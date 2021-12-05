@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap('n', '<Leader>f', '<Cmd>NvimTreeToggle<CR>', { noremap =
 -- autocmd conf FileType NvimTree setlocal tabstop=2 shiftwidth=2
 vim.cmd[[autocmd conf FileType NvimTree setlocal tabstop=2 shiftwidth=2]]
 -- 何が目的なのかを説明しづらいな…この設定
-vim.cmd[[autocmd conf FileType NvimTree autocmd! DirChanged * tcd %:h]]
+vim.cmd[[autocmd conf FileType NvimTree autocmd! DirChanged * tcd %:p:h]]
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 local list = {
@@ -125,7 +125,8 @@ require'nvim-tree'.setup{
         --},
         hide_dotfiles = 1, -- Not hide dotfiles
         diagnostics = {
-                enable =true,
+                --enable = true,
+                enable = false,
         },
         view = {
                 mappings = {

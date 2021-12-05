@@ -17,7 +17,7 @@ let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
 
 " \ ←を押したときのインデント増加量を司る"
-let g:vim_indent_cont = 1
+let g:vim_indent_cont = shiftwidth()
 
 set mouse+=a "マウスを有効化
 set number "今何行かを表示"
@@ -53,7 +53,8 @@ set hlsearch " 検索結果をハイライト
 set termguicolors    " ターミナルでも True Color を使えるようにする。
 
 set pumblend=25     " ポップアップメニューの透明度
-set pumheight=15     " ポップアップメニューの高さ
+set pumheight=30     " ポップアップメニューの高さ
+"set pumwidth=10
 
 set winblend=25 " ウィンドウも透明にする"
 
@@ -81,4 +82,4 @@ set signcolumn=number
 
 
 " denops.vimのデバッグモードをオンにする"
-let g:denops#debug = 1
+"let g:denops#debug = 1

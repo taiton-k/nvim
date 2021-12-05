@@ -2,10 +2,11 @@
 " Shougo/ddc-nvim-lsp :LSPをddcでも使えるようにしてくれる
 " LumaKernel/ddc-file :ファイルの補完
 " vim-skk/denops-skkeleton.vim :SKKをddcでも使えるようにしてくれる
-call ddc#custom#patch_global('sources', ['around','skkeleton','file'])
+call ddc#custom#patch_global('sources', ['around','file'])
 
-call ddc#custom#patch_filetype(['vim','lua'],'sources',['around','nvim-lsp','skkeleton','file'])
-call ddc#custom#patch_filetype('cpp','sources',['around','nvim-lsp','skkeleton'])
+call ddc#custom#patch_filetype(['vim'],'sources',['nvim-lsp','necovim','file','around'])
+call ddc#custom#patch_filetype(['lua','cpp','typescript'],'sources',['nvim-lsp','around','file'])
+call ddc#custom#patch_filetype(['glsl'],'sources',['around'])
 
 
 " Use matcher_head and sorter_rank.
@@ -13,9 +14,9 @@ call ddc#custom#patch_filetype('cpp','sources',['around','nvim-lsp','skkeleton']
 " Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', {
         \ '_': {
-                \ 'matchers': ['matcher_head'],
-                \ 'sorters': ['sorter_rank'],
-                \ 'converters': ['converter_remove_overlap'],
+                \ 'matchers': ['matcher_head','matcher_fuzzy'],
+                \ 'sorters': ['sorter_rank','sorter_fuzzy'],
+                \ 'converters': ['converter_remove_overlap','converter_fuzzy'],
                 \},
         \ 'around': {
                 \ 'mark': 'A',
@@ -40,6 +41,15 @@ call ddc#custom#patch_global('sourceOptions', {
                 \ },
         \ 'cmdline-history': {'mark': 'history'},
         \ })
+
+call ddc#custom#patch_global('filterParams',{
+        \'maatcher_fuzzy':{
+                \'splitMode':'character',
+                \},
+        \'converter_fuzzy':{
+                \'hlGroup':'UnderLined',
+                \},
+        \})
 
 " 補完が発火するタイミング
 call ddc#custom#patch_global('autoCompleteEvents', [
