@@ -1,4 +1,4 @@
-vim.g.nvim_tree_highlight_opened_files = 3 -- Enable highligting for opened folders and file both icons and names
+vim.g.nvim_tree_highlight_opened_files = 1 -- Enable highligting for opened folders and file both icons and names
 vim.g.nvim_tree_quit_on_open = 1 -- close the tree when a file is opened
 vim.g.nvim_tree_indent_markers = 0 -- display indent markers when folders are open
 vim.g.nvim_tree_group_empty = 0 -- folders that contain only one folder are grouped
@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap('n', '<Leader>f', '<Cmd>NvimTreeToggle<CR>', { noremap =
 -- autocmd conf FileType NvimTree setlocal tabstop=2 shiftwidth=2
 vim.cmd[[autocmd conf FileType NvimTree setlocal tabstop=2 shiftwidth=2]]
 -- 何が目的なのかを説明しづらいな…この設定
-vim.cmd[[autocmd conf FileType NvimTree autocmd! DirChanged * tcd %:p:h]]
+vim.cmd[[autocmd conf DirChanged * if &filetype == "NvimTree" | tcd %:p:h]]
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 local list = {

@@ -6,12 +6,12 @@ cnoremap <silent><expr> <Tab>
 \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
 \ ddc#manual_complete()
 cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-cnoremap <expr> <C-n>
-        \pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-        \'<Down>'
-cnoremap <expr> <C-p>
-        \pum#visible() ?  '<Cmd>call pum#map#insert_relative(-1)<CR>' :
-        \'<Up>'
+"cnoremap <expr> <C-n>
+"        \pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+"        \'<Down>'
+"cnoremap <expr> <C-p>
+"        \pum#visible() ?  '<Cmd>call pum#map#insert_relative(-1)<CR>' :
+"        \'<Up>'
 cnoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
 cnoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 

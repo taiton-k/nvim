@@ -3,7 +3,7 @@ require'nvim-treesitter.configs'.setup {
                 enable = true, -- syntax highlightを有効にする
         },
         indent = {
-                enable = true, -- tree-sitterによるインデントを有効にする
+                enable = false, -- tree-sitterによるインデントを有効にする
         },
 }
 

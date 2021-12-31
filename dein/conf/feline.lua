@@ -1,3 +1,4 @@
+
 local nord = {
         --16 colors
         bg = "#2E3440",-- nord0
@@ -83,7 +84,7 @@ local highlights = {
                 warnings_sp = function()
                         return {
                                 fg = color_table.lsp.warnings,
-                                bg = require('feline.providers.lsp').diagnostics_exist('Error') and
+                                bg = require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.ERROR) and
                                      color_table.lsp.errors or
                                      'NONE'
                         }
@@ -95,9 +96,9 @@ local highlights = {
                 hints_sp = function()
                         return {
                                 fg = color_table.lsp.hints,
-                                bg = require('feline.providers.lsp').diagnostics_exist('Warning') and
+                                bg = require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.WARN) and
                                      color_table.lsp.warnings or
-                                     require('feline.providers.lsp').diagnostics_exist('Error') and
+                                     require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.ERROR) and
                                      color_table.lsp.errors or
                                     'NONE',
                         }
@@ -109,11 +110,11 @@ local highlights = {
                 info_sp = function()
                         return {
                                 fg = color_table.lsp.info,
-                                bg = require('feline.providers.lsp').diagnostics_exist('Hint') and
+                                bg = require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.HINT) and
                                      color_table.lsp.hints or
-                                     require('feline.providers.lsp').diagnostics_exist('Warning') and
+                                     require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.WARN) and
                                      color_table.lsp.warnings or
-                                     require('feline.providers.lsp').diagnostics_exist('Error') and
+                                     require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.ERROR) and
                                      color_table.lsp.errors or
                                      'NONE',
                         }
@@ -122,13 +123,13 @@ local highlights = {
         position_sp = function()
                 return {
                         fg = 'bg',
-                        bg = require('feline.providers.lsp').diagnostics_exist('Information') and
+                        bg = require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.INFO) and
                              color_table.lsp.info or
-                             require('feline.providers.lsp').diagnostics_exist('Hint') and
+                             require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.HINT) and
                              color_table.lsp.hints or
-                             require('feline.providers.lsp').diagnostics_exist('Warning') and
+                             require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.WARN) and
                              color_table.lsp.warnings or
-                             require('feline.providers.lsp').diagnostics_exist('Error') and
+                             require('feline.providers.lsp').diagnostics_exist(vim.diagnostic.severity.ERROR) and
                              color_table.lsp.errors or
                              'NONE'
                 }
@@ -372,14 +373,20 @@ local components = {
 }
 
 local middle = {}
-for i=1 , 300 do
+for i=1 , 150 do
         middle[i] = components.line
 end
 
 local middle_inactive = {}
-for i=1 , 300 do
+for i=1 , 150 do
         middle_inactive[i] = components.line_inactive
 end
+
+--require('feline').use_theme(nord)
+
+require('feline').add_theme('nord',nord)
+
+require('feline').use_theme('nord')
 
 require('feline').setup {
         --[[colors = {
@@ -390,7 +397,8 @@ require('feline').setup {
                 green = '#608b4e',
                 yellow = '#EBCB8B',
         },]]
-        colors = nord,
+        --colors = nord,
+        theme = 'nord',
         vi_mode_colors = {
                 ['COMMAND'] = 'yellow',
         },

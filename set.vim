@@ -19,8 +19,8 @@ let g:loaded_netrwFileHandlers = 1
 " \ ←を押したときのインデント増加量を司る"
 let g:vim_indent_cont = shiftwidth()
 
-set mouse+=a "マウスを有効化
-set number "今何行かを表示"
+set mouse=nv "マウスを有効化
+set relativenumber "今何行かを表示"
 set nowrap "いっちゃん端までいっても折り返さない
 
 filetype plugin indent on "ファイルタイプ検出、プラグイン、インデントを有効にする

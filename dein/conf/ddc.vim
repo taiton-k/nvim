@@ -14,13 +14,12 @@ call ddc#custom#patch_filetype(['glsl'],'sources',['around'])
 " Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', {
         \ '_': {
-                \ 'matchers': ['matcher_head','matcher_fuzzy'],
-                \ 'sorters': ['sorter_rank','sorter_fuzzy'],
-                \ 'converters': ['converter_remove_overlap','converter_fuzzy'],
+                \ 'matchers': ['matcher_fuzzy'],
+                \ 'sorters': ['sorter_fuzzy'],
+                \ 'converters': ['converter_fuzzy','converter_remove_overlap'],
                 \},
         \ 'around': {
                 \ 'mark': 'A',
-                \ 'matchers': ['matcher_head', 'matcher_length'],
                 \ },
         \
         \ 'nvim-lsp': {

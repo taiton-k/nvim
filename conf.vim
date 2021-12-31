@@ -34,6 +34,8 @@ nnoremap <silent> k gk
 nnoremap <silent> <Leader>w <Cmd>update<CR>
 nnoremap <silent> <Leader>W <Cmd>write<CR>
 
+imap <silent> <C-h> <BS>
+
 " jj でノーマルモードに戻っちゃうんだぜ！"
 "inoremap <silent> jj <esc> 
 "vnoremap <silent> jj <esc> 
