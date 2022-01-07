@@ -191,6 +191,7 @@ local components = {
                         truncate_hide = true,
                         priority = 2,
                         left_sep = '█',
+                        right_sep = '█',
                 },
                 modified = {
                         provider = function()
@@ -373,12 +374,12 @@ local components = {
 }
 
 local middle = {}
-for i=1 , 150 do
+for i=1 , 200 do
         middle[i] = components.line
 end
 
 local middle_inactive = {}
-for i=1 , 150 do
+for i=1 ,200 do
         middle_inactive[i] = components.line_inactive
 end
 
