@@ -99,9 +99,11 @@ tnoremap <silent><C-t> <Cmd>T<CR>
 " ESCキー2度押しでハイライトの切り替え
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
+inoremap <C-@> <Nop>
+
 " For 競プロ"
 command! OjTest belowright new term:// oj t -N -d tests
-command! Compile !g++ -Wall -Wextra %
+command! Compile !g++ -Wall -Wextra -O0 %
 command! Submit belowright new term:// acc submit
 command! Apply runtime init.vim
 
