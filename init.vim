@@ -1,11 +1,13 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-runtime set.vim
+"runtime set.vim
+runtime lua/config.lua
 
 runtime conf.vim
 
-runtime dein/dein.vim
+"runtime dein/dein.vim
+runtime lua/dein.lua
 
 if exists('g:nvui')
         runtime nvui.vim
