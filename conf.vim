@@ -20,7 +20,7 @@ autocmd conf FileType markdown highlight link markdownCodeBlock String
 autocmd conf FileType markdown highlight link markdownCode String
 
 " Leader キーにスペースを割り当てる"
-let mapleader = "\<Space>"
+"let g:mapleader = "\<Space>"
 
 " 全選択"
 nnoremap <silent> <Leader>a ggVG
