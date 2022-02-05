@@ -1,0 +1,20 @@
+[[plugins]]
+repo =  'neovim/nvim-lspconfig'
+on_ft = ['cpp','vim','lua','typescript','glsl']
+hook_source = 'lua require("dein.lspconfig");'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_ft = ['cpp','vim','lua','typescript','glsl']
+hook_source = 'runtime dein/conf/nvim-treesitter.lua'
+hook_post_update = 'TSUpdate'
+
+[[plugins]]
+repo = 'vim-skk/denops-skkeleton.vim'
+on_event = 'InsertEnter'
+hook_source = 'runtime dein/conf/skkeleton.vim'
+
+[[plugins]]
+repo = 'kat0h/bufpreview.vim'
+on_ft = ['markdown']
+depends = ['denops.vim']

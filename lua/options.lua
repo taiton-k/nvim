@@ -70,8 +70,10 @@ o.splitbelow = true;
 
 o.clipboard = 'unnamedplus,' .. o.clipboard;
 
---o.list = true;
---o.listchars = 'eol:↴';
+o.list = true;
+o.listchars = 'eol:↴'
+--'eol:⋅';
+--;space:↴';
 
 o.signcolumn = 'no';
 o.laststatus = 0;
