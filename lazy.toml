@@ -10,7 +10,7 @@ hook_source = 'runtime dein/conf/nvim-treesitter.lua'
 hook_post_update = 'TSUpdate'
 
 [[plugins]]
-repo = 'vim-skk/denops-skkeleton.vim'
+repo = 'vim-skk/skkeleton'
 on_event = 'InsertEnter'
 hook_source = 'runtime dein/conf/skkeleton.vim'
 

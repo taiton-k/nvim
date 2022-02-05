@@ -2,7 +2,7 @@ local fn = vim.fn;
 local api = vim.api;
 
 function _G.skkeleton_initialize ()
-        fn([[skkeleton#config"]])({
+        fn['skkeleton#config']({
                 globalJisyo = '~/.config/skk/SKK-JISYO.L';
                 userJisyo = '~/.config/skk/my_jisyo';
                 immediatelyJisyoRW = true;
@@ -19,6 +19,6 @@ function _G.skkeleton_initialize ()
                 skkServerReqEnc = 'utf-8';
         });
 end
-fn('autocmd! User skkeleton-initialize-pre call v:lua.skkeleton_initialize()');
+cmd('autocmd! User skkeleton-initialize-pre call v:lua.skkeleton_initialize()');
 
 api.nvim_set_keymap('!','<C-j>','<Plug>(skkeleton-toggle)',{});

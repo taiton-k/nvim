@@ -2,7 +2,7 @@ local lspconfig = require('lspconfig');
 
 
 
-lspconfig.sumneco_lua.setup({
+lspconfig.sumneko_lua.setup({
         cmd = {
                 'lua-language-server',
                 '-E',
@@ -29,6 +29,7 @@ lspconfig.sumneco_lua.setup({
 
 lspconfig.ccls.setup({
         single_file_support = true;
+        root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", "compile_flags.txt", ".git","./") or lspconfig.util.dirname,
         init_options = {
                 cache = {
                         directory = '/tmp/ccls-cache';
@@ -42,7 +43,8 @@ lspconfig.ccls.setup({
                         };
                         extraArgs = {
                                 '-std=c++17',
-                                '-Weverything',
+                                '-Wall',
+                                '-Wextra',
                         };
                 };
         };
