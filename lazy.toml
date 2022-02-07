@@ -6,13 +6,18 @@ hook_source = 'lua require("dein.lspconfig");'
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 on_ft = ['cpp','vim','lua','typescript','glsl']
-hook_source = 'runtime dein/conf/nvim-treesitter.lua'
+hook_source = 'lua require("dein.treesitter");'
 hook_post_update = 'TSUpdate'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 on_event = 'InsertEnter'
 hook_source = 'runtime dein/conf/skkeleton.vim'
+
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+on_event = 'InsertEnter'
+hook_source = 'lua require("dein.autopairs");'
 
 [[plugins]]
 repo = 'kat0h/bufpreview.vim'

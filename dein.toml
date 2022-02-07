@@ -1,6 +1,5 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
@@ -19,6 +18,12 @@ repo = 'kyazdani42/nvim-web-devicons'
 [[plugins]]
 repo = 'lukas-reineke/indent-blankline.nvim'
 hook_add = 'lua require("dein.indent_blankline");'
+
+[[plugins]]
+repo = 'skanehira/jumpcursor.vim'
+hook_add = 'nmap <Leader>j <Plug>(jumpcursor-jump)'
+
+
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
@@ -60,3 +65,42 @@ repo = 'Shougo/ddc-converter_remove_overlap'
 
 [[plugins]]
 repo = 'tani/ddc-fuzzy'
+
+
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+hook_add = 'lua require("dein.ddu")'
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-std'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-word'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-line'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+repo = 'gamoutatsumi/ddu-source-nvim-lsp'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+
+[[plugins]]
+repo = 'yuki-yano/ddu-filter-fzf'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_relative'

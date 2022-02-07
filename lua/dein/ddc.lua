@@ -57,7 +57,7 @@ local prev_cmdbuffer_config;
 function _G.ddc_commandline_pre ()
         prev_cmdbuffer_config = fn['ddc#custom#get_buffer']();
         fn['ddc#custom#patch_buffer']('sources',{'necovim','file','cmdline-history','around'});
-        cmd('autocmd! CmdlineLeave * ++once call v:lua.ddc_commandline_post()');
+        cmd('autocmd CmdlineLeave * ++once call v:lua.ddc_commandline_post()');
         fn['ddc#enable_cmdline_completion']();
 end
 function _G.ddc_commandline_post ()
@@ -72,8 +72,8 @@ end
 function _G.ddc_skkeleton_post ()
         fn['ddc#custom#set_buffer'](prev_skkbuffer_config);
 end
-cmd('autocmd! User skkeleton-enable-pre call v:lua.ddc_skkeleton_pre()');
-cmd('autocmd! User skkeleton-disenable-pre call v:lua.ddc_skkeleton_post()');
+cmd('autocmd User skkeleton-enable-pre call v:lua.ddc_skkeleton_pre()');
+cmd('autocmd User skkeleton-disenable-pre call v:lua.ddc_skkeleton_post()');
 
 
 api.nvim_set_keymap('i','<TAB>',[[pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#manual_complete()]],{noremap = true,expr = true});

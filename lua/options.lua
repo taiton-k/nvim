@@ -61,7 +61,7 @@ o.pumblend = 25;
 o.pumheight = 30;
 o.pumwidth = 10;
 
-o.winblend = 25;
+o.winblend = 5;
 
 o.hidden = true;
 
@@ -89,7 +89,7 @@ o.ttyfast = true;
 
 o.history = 2000;
 
-o.matchpairs = o.matchpairs .. ',<:>';
+o.matchpairs = o.matchpairs .. [[,<:>,':',":"]];
 o.showmatch = true;
 o.matchtime = 1;
 

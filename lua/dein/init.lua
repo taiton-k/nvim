@@ -1,6 +1,10 @@
 local fn = vim.fn;
 local o = vim.o;
 local cmd = vim.cmd;
+local g = vim.g;
+
+g['dein#auto_recache'] = true;
+g['dein#install_max_processes'] = 16;
 
 local dein_dir = fn.expand("~/.cache/dein");
 local dein_repo_dir = dein_dir .. "/repos/github.com/Shougo/dein.vim";
@@ -33,10 +37,8 @@ end
 fn["dein#begin"](dein_dir);
 fn["dein#end"]();
 
-cmd([[
-filetype plugin indent on
-syntax enable
-]]);
+cmd('filetype plugin indent on');
+cmd('syntax enable');
 
 if fn["dein#check_install"]() == 1 then
         fn["dein#install"]();

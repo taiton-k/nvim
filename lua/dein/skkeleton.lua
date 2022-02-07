@@ -19,6 +19,6 @@ function _G.skkeleton_initialize ()
                 skkServerReqEnc = 'utf-8';
         });
 end
-cmd('autocmd! User skkeleton-initialize-pre call v:lua.skkeleton_initialize()');
+cmd('autocmd User skkeleton-initialize-pre call v:lua.skkeleton_initialize()');
 
 api.nvim_set_keymap('!','<C-j>','<Plug>(skkeleton-toggle)',{});
