@@ -93,8 +93,8 @@ repo = 'Shougo/ddu-source-line'
 [[plugins]]
 repo = 'shun/ddu-source-buffer'
 
-[[plugins]]
-repo = 'gamoutatsumi/ddu-source-nvim-lsp'
+#[[plugins]]
+#repo = 'gamoutatsumi/ddu-source-nvim-lsp'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-file_rec'
