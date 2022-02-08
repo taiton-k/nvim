@@ -11,7 +11,7 @@ hook_post_update = 'TSUpdate'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
-on_event = 'InsertEnter'
+on_cmd = 'Skkeleton'
 hook_source = 'lua require("dein.skkeleton");'
 
 [[plugins]]
