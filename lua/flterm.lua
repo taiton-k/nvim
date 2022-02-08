@@ -81,7 +81,6 @@ end
 
 
 flterm.toggle_term = function ()
-        print('kita.');
         if api.nvim_win_is_valid(flterm.win_handle) then
                 flterm.close_term();
         else

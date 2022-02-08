@@ -100,6 +100,9 @@ repo = 'gamoutatsumi/ddu-source-nvim-lsp'
 repo = 'Shougo/ddu-source-file_rec'
 
 [[plugins]]
+repo = 'matsui54/ddu-source-help'
+
+[[plugins]]
 repo = 'yuki-yano/ddu-filter-fzf'
 
 [[plugins]]

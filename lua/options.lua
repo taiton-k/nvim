@@ -61,7 +61,7 @@ o.pumblend = 25;
 o.pumheight = 30;
 o.pumwidth = 10;
 
-o.winblend = 5;
+o.winblend = 0;
 
 o.hidden = true;
 

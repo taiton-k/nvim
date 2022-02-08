@@ -16,7 +16,9 @@ autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
-"autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
+autocmd ColorScheme * highlight! link FloatBorder VertSplit
+autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
+autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
 
 "for jumpcursor.vim"
 autocmd ColorScheme * highlight! link ErrorMsg Todo
@@ -34,7 +36,9 @@ api.nvim_set_keymap('i','<C-@>','<C-[>',{noremap = true});
 api.nvim_set_keymap('n','<Esc><Esc>','<Cmd>set nohlsearch!<CR>',{noremap = true});
 api.nvim_set_keymap('t','<Esc><Esc>',[[<C-\><C-N>]],{noremap = true});
 
-require('flterm').setup();
+require('flterm').setup({
+        border = 'rounded';
+});
 api.nvim_set_keymap('n','<C-t>','<Cmd>FlTermToggle<CR>',{noremap = true});
 api.nvim_set_keymap('t','<C-t>','<Cmd>FlTermToggle<CR>',{noremap = true});
 
