@@ -21,6 +21,9 @@ ddc.patch_global('sourceOptions',{
         around = {
                 mark = 'A';
         };
+        line = {
+                mark = 'line';
+        };
         skkeleton = {
                 mark = 'skk';
                 matchers = {'skkeleton'};
@@ -34,6 +37,11 @@ ddc.patch_global('sourceOptions',{
         };
         ['cmdline-history'] = {
                 mark = 'history';
+        };
+        emoji = {
+                mark = 'emoji';
+                matchers = {'emoji'};
+                sorters = {};
         };
 });
 
