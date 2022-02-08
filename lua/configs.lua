@@ -36,12 +36,6 @@ api.nvim_set_keymap('i','<C-@>','<C-[>',{noremap = true});
 api.nvim_set_keymap('n','<Esc><Esc>','<Cmd>set nohlsearch!<CR>',{noremap = true});
 api.nvim_set_keymap('t','<Esc><Esc>',[[<C-\><C-N>]],{noremap = true});
 
-require('flterm').setup({
-        border = 'rounded';
-});
-api.nvim_set_keymap('n','<C-t>','<Cmd>FlTermToggle<CR>',{noremap = true});
-api.nvim_set_keymap('t','<C-t>','<Cmd>FlTermToggle<CR>',{noremap = true});
-
 api.nvim_add_user_command('H','vert help <args>',{nargs = '*',complete = 'help'});
 api.nvim_add_user_command('OjTest','FlTermRun oj t -N -d tests',{});
 api.nvim_add_user_command('Compile','!g++ -Wall -Wextra -O0 %',{});
