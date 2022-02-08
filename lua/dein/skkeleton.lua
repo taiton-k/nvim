@@ -1,5 +1,6 @@
 local fn = vim.fn;
 local api = vim.api;
+local cmd = vim.cmd;
 
 function _G.skkeleton_initialize ()
         fn['skkeleton#config']({
@@ -14,7 +15,7 @@ function _G.skkeleton_initialize ()
                 markerHenkanSelect = '▼ ',
                 useSkkServer = true;
                 skkServerHost = '127.0.0.1';
-                skkServerPort = '1178';
+                skkServerPort = 1178;
                 skkServerResEnc = 'utf-8';
                 skkServerReqEnc = 'utf-8';
         });

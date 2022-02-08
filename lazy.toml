@@ -12,7 +12,7 @@ hook_post_update = 'TSUpdate'
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 on_event = 'InsertEnter'
-hook_source = 'runtime dein/conf/skkeleton.vim'
+hook_source = 'lua require("dein.skkeleton");'
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
