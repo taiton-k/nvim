@@ -49,6 +49,7 @@ o.fileencodings = 'utf-8,cp932,euc-jp,ucs-boms';
 o.fileformats = 'unix,dos,mac';
 
 o.ambiwidth = 'single';
+o.emoji = true;
 
 o.incsearch = true;
 o.ignorecase = true;
