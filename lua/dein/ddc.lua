@@ -7,7 +7,7 @@ local ddc = {
         patch_filetype = fn['ddc#custom#patch_filetype'];
 }
 
-ddc.patch_global('sources',{'file','around','line','emoji'});
+ddc.patch_global('sources',{'file','around','line'});
 ddc.patch_filetype({'vim'},'sources',{'nvim-lsp','necovim','file','cmdline-history','around','line'});
 ddc.patch_filetype({'lua','cpp','typescript'},'sources',{'nvim-lsp','file','around','line'});
 ddc.patch_filetype({'glsl'},'sources',{'around','line'});
@@ -37,11 +37,6 @@ ddc.patch_global('sourceOptions',{
         };
         ['cmdline-history'] = {
                 mark = 'history';
-        };
-        emoji = {
-                mark = 'emoji';
-                matchers = {'emoji'};
-                sorters = {};
         };
 });
 
