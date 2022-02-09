@@ -32,7 +32,7 @@ api.nvim_set_keymap('n','j','gj',{noremap = true});
 api.nvim_set_keymap('n','k','gk',{noremap = true});
 api.nvim_set_keymap('n','<Leader>w','<Cmd>update<CR>',{noremap = true});
 api.nvim_set_keymap('n','<Leader>W','<Cmd>write<CR>',{noremap = true});
-api.nvim_set_keymap('i','<C-@>','<C-[>',{noremap = true});
+api.nvim_set_keymap('i','<C-Space>','<C-[>',{noremap = true});
 api.nvim_set_keymap('n','<Esc><Esc>','<Cmd>set nohlsearch!<CR>',{noremap = true});
 api.nvim_set_keymap('t','<Esc><Esc>',[[<C-\><C-N>]],{noremap = true});
 
