@@ -56,7 +56,7 @@ autocmd FileType ddu-ff nnoremap <buffer> / <Cmd>call ddu#ui#ff#do_action("openF
 autocmd FileType ddu-ff nnoremap <buffer> q <Cmd>call ddu#ui#ff#do_action("quit")<CR>
 autocmd FileType ddu-ff nnoremap <buffer> <CR> <Cmd>call ddu#ui#ff#do_action("itemAction")<CR>
 autocmd FileType ddu-ff nnoremap <buffer> p <Cmd>call ddu#ui#ff#do_action("preview")<CR>
-autocmd FileType ddu-ff nnoremap <buffer><nowait> <Space> <Cmd>call ddu#ui#ff#do_action("toggleSelectItem")<CR>
+autocmd FileType ddu-ff nnoremap <buffer> <Tab> <Cmd>call ddu#ui#ff#do_action("toggleSelectItem")<CR>
 
 autocmd BufWinEnter ddu-ff-filter lua vim.api.nvim_win_set_config(0,{border = 'rounded'});
 autocmd FileType ddu-ff-filter inoremap <buffer> <CR> <Esc><Cmd>close<CR>
