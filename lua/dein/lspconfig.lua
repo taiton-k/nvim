@@ -1,6 +1,39 @@
+--local api = vim.api;
+local lsp = vim.lsp;
+local fn = vim.fn;
+local cmd = vim.cmd;
+
+local clients_data = {};
+local function detach_clients ()
+        local clients = lsp.buf_get_clients(0);
+
+        clients_data[fn.bufnr()] = {};
+
+        for id,_ in pairs(clients) do
+                table.insert(clients_data[fn.bufnr()],id);
+                lsp.buf_detach_client(0,id);
+        end
+end
+
+local function attach_clients ()
+        for id in pairs(clients_data[fn.bufnr()]) do
+                lsp.buf_attach_client(0,id);
+        end
+end
+
+function _G.lsp_toggle_clients ()
+        if #lsp.buf_get_clients(0) == 0 then
+                attach_clients();
+        else
+                detach_clients();
+        end
+end
+
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_clients()<CR>');
+
+
+
 local lspconfig = require('lspconfig');
-
-
 
 lspconfig.sumneko_lua.setup({
         cmd = {
