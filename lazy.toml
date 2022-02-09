@@ -18,7 +18,3 @@ hook_source = 'lua require("dein.skkeleton");'
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
 hook_source = 'lua require("dein.autopairs");'
-
-[[plugins]]
-repo = 'kat0h/bufpreview.vim'
-on_ft = ['markdown']
