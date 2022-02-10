@@ -1,35 +1,39 @@
 --local api = vim.api;
-local lsp = vim.lsp;
 local fn = vim.fn;
 local cmd = vim.cmd;
+local lsp = vim.lsp;
+local diagnostic = vim.diagnostic;
 
-local clients_data = {};
-local function detach_clients ()
-        local clients = lsp.buf_get_clients(0);
+local diagnostic_is_enable = {};
 
-        clients_data[fn.bufnr()] = {};
+local lsp_clients_id = {};
 
-        for id,_ in pairs(clients) do
-                table.insert(clients_data[fn.bufnr()],id);
-                lsp.buf_detach_client(0,id);
+function _G.lsp_toggle_diagnostics ()
+        if not lsp_clients_id[fn.bufnr()] then
+                lsp_clients_id[fn.bufnr()] = {};
+                for id,_ in pairs(lsp.buf_get_clients(0)) do
+                        table.insert(lsp_clients_id[fn.bufnr()],id);
+                end
         end
-end
 
-local function attach_clients ()
-        for id in pairs(clients_data[fn.bufnr()]) do
-                lsp.buf_attach_client(0,id);
-        end
-end
+        if diagnostic_is_enable[fn.bufnr()]==nil or diagnostic_is_enable[fn.bufnr()]==true then
+                for _,id in pairs(lsp_clients_id[fn.bufnr()]) do
+                        diagnostic.disable(0,lsp.diagnostic.get_namespace(id));
+                end
 
-function _G.lsp_toggle_clients ()
-        if #lsp.buf_get_clients(0) == 0 then
-                attach_clients();
+                diagnostic_is_enable[fn.bufnr()] = false;
         else
-                detach_clients();
+                for _,id in pairs(lsp_clients_id[fn.bufnr()]) do
+                        diagnostic.enable(0,lsp.diagnostic.get_namespace(id));
+                end
+
+                diagnostic_is_enable[fn.bufnr()] = true;
         end
 end
 
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_clients()<CR>');
+
+
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_diagnostics()<CR>');
 
 
 
