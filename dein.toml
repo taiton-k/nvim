@@ -21,7 +21,7 @@ hook_add = 'lua require("dein.indent_blankline");'
 
 [[plugins]]
 repo = 'skanehira/jumpcursor.vim'
-hook_add = 'nmap <Leader>j <Plug>(jumpcursor-jump)'
+hook_add = 'map <Leader>j <Plug>(jumpcursor-jump)'
 
 [[plugins]]
 repo = 'taiton-k/flterm.lua'
