@@ -20,6 +20,9 @@ autocmd ColorScheme * highlight! link FloatBorder VertSplit
 autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
 
+autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
+autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
+
 "for jumpcursor.vim"
 autocmd ColorScheme * highlight! link ErrorMsg Todo
 
