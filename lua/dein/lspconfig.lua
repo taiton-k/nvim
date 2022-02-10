@@ -94,7 +94,9 @@ lspconfig.vimls.setup({});
 
 
 
-lspconfig.denols.setup({});
+lspconfig.denols.setup({
+        single_file_support = true;
+});
 
 
 
