@@ -6,13 +6,13 @@ autocmd ColorScheme * highlight IndentLineGreen  guifg=#009600 ctermfg=106 gui=n
 autocmd ColorScheme * highlight IndentLineAqua   guifg=#009696 ctermfg=74  gui=nocombine
 autocmd ColorScheme * highlight IndentLineBLue   guifg=#004896 ctermfg=56  gui=nocombine
 autocmd ColorScheme * highlight IndentLinePurple guifg=#000096 ctermfg=54  gui=nocombine
-autocmd ColorScheme * highlight SpaceCharRed    guifg=#B83232 ctermfg=88  gui=nocombine
-autocmd ColorScheme * highlight SpaceCharOrange guifg=#B86432 ctermfg=94  gui=nocombine
-autocmd ColorScheme * highlight SpaceCharYellow guifg=#B8B832 ctermfg=100 gui=nocombine
-autocmd ColorScheme * highlight SpaceCharGreen  guifg=#32B832 ctermfg=106 gui=nocombine
-autocmd ColorScheme * highlight SpaceCharAqua   guifg=#32B8B8 ctermfg=74  gui=nocombine
-autocmd ColorScheme * highlight SpaceCharBLue   guifg=#32B8B8 ctermfg=56  gui=nocombine
-autocmd ColorScheme * highlight SpaceCharPurple guifg=#3232B8 ctermfg=54  gui=nocombine
+autocmd ColorScheme * highlight SpaceCharRed    guifg=#B80808 ctermfg=88  gui=nocombine
+autocmd ColorScheme * highlight SpaceCharOrange guifg=#B86408 ctermfg=94  gui=nocombine
+autocmd ColorScheme * highlight SpaceCharYellow guifg=#B8B808 ctermfg=100 gui=nocombine
+autocmd ColorScheme * highlight SpaceCharGreen  guifg=#08B808 ctermfg=106 gui=nocombine
+autocmd ColorScheme * highlight SpaceCharAqua   guifg=#08B8B8 ctermfg=74  gui=nocombine
+autocmd ColorScheme * highlight SpaceCharBLue   guifg=#08B8B8 ctermfg=56  gui=nocombine
+autocmd ColorScheme * highlight SpaceCharPurple guifg=#0808B8 ctermfg=54  gui=nocombine
 ]])
 
 require('indent_blankline').setup({
