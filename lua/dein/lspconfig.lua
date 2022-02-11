@@ -31,11 +31,20 @@ function _G.lsp_toggle_diagnostics ()
         end
 end
 
-
-
 cmd('autocmd FileType cpp,lua,vim,glsl,typescript nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_diagnostics()<CR>');
 
+local lsp_icons = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(lsp_icons) do
+  local hl = "DiagnosticSign" .. type
+  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
+
+diagnostic.config({
+  virtual_text = {
+    prefix = '● ', -- Could be '■', '▎', 'x'
+  }
+})
 
 local lspconfig = require('lspconfig');
 
