@@ -22,12 +22,14 @@ function _G.lsp_toggle_diagnostics ()
                 end
 
                 diagnostic_is_enable[fn.bufnr()] = false;
+                print('Diagnostic is disabled.');
         else
                 for _,id in pairs(lsp_clients_id[fn.bufnr()]) do
                         diagnostic.enable(0,lsp.diagnostic.get_namespace(id));
                 end
 
                 diagnostic_is_enable[fn.bufnr()] = true;
+                print('Diagnostic is enabled.');
         end
 end
 
