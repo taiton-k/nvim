@@ -82,6 +82,6 @@ cmd('autocmd User skkeleton-disenable-pre call v:lua.ddc_skkeleton_post()');
 api.nvim_set_keymap('i','<TAB>',[[pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#manual_complete()]],{noremap = true,expr = true});
 api.nvim_set_keymap('!','<S-TAB>','<Cmd>call pum#map#insert_relative(-1)<CR>',{noremap = true});
 api.nvim_set_keymap('c','<TAB>',[[pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : ddc#manual_complete()]],{noremap = true,expr = true});
-api.nvim_set_keymap('n',':','<Cmd>call v:lua.ddc_commandline_pre()<CR>:',{noremap = true});
+--api.nvim_set_keymap('n',':','<Cmd>call v:lua.ddc_commandline_pre()<CR>:',{noremap = true});
 
 fn['ddc#enable']();
