@@ -3,6 +3,11 @@ repo =  'neovim/nvim-lspconfig'
 on_ft = ['cpp','vim','lua','typescript','glsl']
 hook_source = 'lua require("dein.lspconfig");'
 
+#[[plugins]]
+#repo = 'j-hui/fidget.nvim'
+#on_source = 'nvim-lspconfig'
+#hook_source = 'lua require("dein.fidget");'
+
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 on_ft = ['cpp','vim','lua','typescript','glsl','markdown']
