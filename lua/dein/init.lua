@@ -5,6 +5,7 @@ local g = vim.g;
 
 g['dein#auto_recache'] = true;
 g['dein#install_max_processes'] = 16;
+g['dein#install_progress_type'] = 'floating';
 
 local dein_dir = fn.expand("~/.cache/dein");
 local dein_repo_dir = dein_dir .. "/repos/github.com/Shougo/dein.vim";

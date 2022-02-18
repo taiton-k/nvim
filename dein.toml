@@ -34,7 +34,7 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
-hook_add = 'call pum#set_option( "border","rounded")'
+hook_add = 'lua require("dein.pum");'
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'

@@ -17,8 +17,10 @@ autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight! link FloatBorder VertSplit
-autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
+"autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
+"autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
+autocmd ColorScheme * highlight LocalFloating guibg=NONE
+autocmd ColorScheme * highlight LocalSelected guibg=NONE guifg=#A3BE8C
 
 autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
 autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
