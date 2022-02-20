@@ -33,7 +33,7 @@ function _G.lsp_toggle_diagnostics ()
         end
 end
 
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_diagnostics()<CR>');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_diagnostics()<CR>');
 
 local lsp_icons = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(lsp_icons) do
@@ -131,3 +131,5 @@ configs.glslls = {
 }
 
 lspconfig.glslls.setup{}
+
+lspconfig.nimls.setup({});

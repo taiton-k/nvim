@@ -30,6 +30,9 @@ autocmd ColorScheme * highlight! link ErrorMsg Todo
 
 autocmd TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert
+
+" Enable nim-lang"
+autocmd BufNewFile,BufRead *.nim setlocal filetype=nim
 ]]);
 
 api.nvim_set_keymap('n','<Leader>a','ggVG',{noremap = true});

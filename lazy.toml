@@ -1,6 +1,6 @@
 [[plugins]]
 repo =  'neovim/nvim-lspconfig'
-on_ft = ['cpp','vim','lua','typescript','glsl']
+on_ft = ['cpp','vim','lua','typescript','glsl','nim']
 hook_source = 'lua require("dein.lspconfig");'
 
 #[[plugins]]
@@ -23,3 +23,7 @@ hook_source = 'lua require("dein.skkeleton");'
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
 hook_source = 'lua require("dein.autopairs");'
+
+[[plugins]]
+repo = 'alaviss/nim.nvim'
+on_ft = ['nim']
