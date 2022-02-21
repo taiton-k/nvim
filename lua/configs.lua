@@ -32,7 +32,7 @@ autocmd TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert
 
 " Enable nim-lang"
-"autocmd BufNewFile,BufRead *.nim setlocal tabstop=8 shiftwidth=8 softtabstop=8
+autocmd FileType nim setlocal tabstop=8 shiftwidth=8 softtabstop=8
 ]]);
 
 api.nvim_set_keymap('n','<Leader>a','ggVG',{noremap = true});
