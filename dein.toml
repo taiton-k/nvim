@@ -27,6 +27,9 @@ hook_add = 'map <Leader>j <Plug>(jumpcursor-jump)'
 repo = 'taiton-k/flterm.lua'
 hook_add = 'lua require("dein.flterm");'
 
+[[plugins]]
+repo = 'zah/nim.vim'
+
 
 
 [[plugins]]

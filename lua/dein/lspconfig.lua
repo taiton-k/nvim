@@ -132,4 +132,11 @@ configs.glslls = {
 
 lspconfig.glslls.setup{}
 
-lspconfig.nimls.setup({});
+lspconfig.nimls.setup({
+        cmd = { "nimlsp" },
+        filetypes = { "nim" },
+        root_dir = function(fname)
+                return lspconfig.util.root_pattern '*.nimble'(fname) or lspconfig.util.find_git_ancestor(fname)
+        end,
+        single_file_support = true,
+});
