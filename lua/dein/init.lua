@@ -24,6 +24,7 @@ if (fn["dein#load_state"](dein_dir) == 1) then
         local toml_dir = fn.expand("~/.config/nvim/");
 
         fn["dein#load_toml"](toml_dir .. "dein.toml", {lazy = 0});
+        fn["dein#load_toml"](toml_dir .. "color.toml", {lazy = 0});
         fn["dein#load_toml"](toml_dir .. "lazy.toml", {lazy = 1});
 
 --       local toml_dir = fn.expand("~/.config/nvim/dein/");

@@ -4,5 +4,5 @@ require('configs');
 
 require('dein');
 
-vim.cmd('colorscheme nord');
+vim.cmd('colorscheme ayu');
 vim.cmd('language messages C');
