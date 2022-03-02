@@ -10,3 +10,5 @@ let g:nord_cursorline_transparent = v:true
 [[plugins]]
 repo = 'Shatur/neovim-ayu'
 hook_add = 'lua require("ayu").setup({});'
+
+
