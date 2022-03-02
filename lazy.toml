@@ -23,3 +23,8 @@ hook_source = 'lua require("dein.skkeleton");'
 repo = 'windwp/nvim-autopairs'
 on_event = 'InsertEnter'
 hook_source = 'lua require("dein.autopairs");'
+
+[[plugins]]
+repo = 'norcalli/nvim-colorizer.lua'
+on_cmd = 'ColorizerToggle'
+hook_source = 'lua require("colorizer").setup({});'
