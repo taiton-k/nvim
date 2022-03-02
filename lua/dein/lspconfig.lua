@@ -80,7 +80,7 @@ lspconfig.ccls.setup({
         root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", "compile_flags.txt", ".git","./") or lspconfig.util.dirname,
         init_options = {
                 cache = {
-                        directory = '/tmp/ccls-cache';
+                        directory = '~/.cache/ccls-cache';
                 };
                 index = {
                         threads = 1;
