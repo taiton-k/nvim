@@ -90,13 +90,13 @@ o.ttyfast = true;
 
 o.history = 2000;
 
-o.matchpairs = o.matchpairs .. [[,<:>,':',":"]];
+o.matchpairs = o.matchpairs .. [[,<:>]];
 o.showmatch = true;
 o.matchtime = 1;
 
 o.sidescroll = 1;
 o.sidescrolloff = 8;
-o.scrolloff = 16;
+o.scrolloff = math.floor(o.lines/6);
 
 o.modeline = false;
 o.modelines = 0;
