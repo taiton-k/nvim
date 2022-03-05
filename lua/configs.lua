@@ -1,5 +1,6 @@
 local cmd = vim.cmd;
 local api = vim.api;
+local fn = vim.fn;
 
 cmd([[
 augroup conf
@@ -8,19 +9,19 @@ augroup END
 ]]);
 
 cmd([[
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=none
-autocmd ColorScheme * highlight NonText ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight SpecialKey ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight! link FloatBorder VertSplit
-"autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
-"autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight LocalFloating guibg=NONE
-autocmd ColorScheme * highlight LocalSelected guibg=NONE guifg=#A3BE8C
+        autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=none
+        autocmd ColorScheme * highlight NonText ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight SpecialKey ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight! link FloatBorder VertSplit
+        "autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
+        "autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
+        autocmd ColorScheme * highlight LocalFloating guibg=NONE
+        autocmd ColorScheme * highlight LocalSelected guibg=NONE guifg=#A3BE8C
 
 autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
 autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
@@ -67,3 +68,13 @@ ikey('<C-b>','<Left>',{noremap = true});
 ikey('<C-f>','<Right>',{noremap = true});
 ikey('<C-p>','<Up>',{noremap = true});
 ikey('<C-n>','<Down>',{noremap = true});
+
+
+
+-- Making Colorscheme
+
+function _G.SynGroup()
+        local s = fn.synID(fn.line('.'), fn.col('.'), 1);
+        print(fn.synIDattr(s, 'name') .. ' -> ' .. fn.synIDattr(fn.synIDtrans(s), 'name'));
+end
+nkey('<Leader>r','<Cmd>lua SynGroup()<CR>',{noremap = true});
