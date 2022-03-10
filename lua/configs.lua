@@ -71,6 +71,13 @@ ikey('<C-n>','<Down>',{noremap = true});
 ikey('<C-a>','<Home><S-Right>',{noremap = true});
 ikey('<C-e>','<End>',{noremap = true});
 
+-- For completion
+ikey('<C-b>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
+ikey('<C-f>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
+ikey('<C-p>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
+ikey('<C-n>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
+
+
 
 
 -- Making Colorscheme
