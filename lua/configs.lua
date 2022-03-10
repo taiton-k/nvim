@@ -64,19 +64,14 @@ api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
 
 
 -- Emacs Keybinds
-ikey('<C-b>','<Left>',{noremap = true});
-ikey('<C-f>','<Right>',{noremap = true});
-ikey('<C-p>','<Up>',{noremap = true});
-ikey('<C-n>','<Down>',{noremap = true});
+-- For completion plugin (ddc.vim)
+ikey('<C-b>','<Left><Cmd>call pum#map#cancel()<CR>',{noremap = true});
+ikey('<C-f>','<Right><Cmd>call pum#map#cancel()<CR>',{noremap = true});
+ikey('<C-p>','<Up><Cmd>call pum#map#cancel()<CR>',{noremap = true});
+ikey('<C-n>','<Down><Cmd>call pum#map#cancel()<CR>',{noremap = true});
+
 ikey('<C-a>','<Home><S-Right>',{noremap = true});
 ikey('<C-e>','<End>',{noremap = true});
-
--- For completion
-ikey('<C-b>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
-ikey('<C-f>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
-ikey('<C-p>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
-ikey('<C-n>','<Cmd>call pum#map#cancel()<CR>',{noremap = true});
-
 
 
 
