@@ -65,13 +65,13 @@ api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
 
 -- Emacs Keybinds
 -- For completion plugin (ddc.vim)
-ikey('<C-b>','<Cmd>call pum#map#confirm()<CR><Left>',{noremap = true});
-ikey('<C-f>','<Cmd>call pum#map#confirm()<CR><Right>',{noremap = true});
-ikey('<C-p>','<Cmd>call pum#map#confirm()<CR><Up>',{noremap = true});
-ikey('<C-n>','<Cmd>call pum#map#confirm()<CR><Down>',{noremap = true});
+ikey('<C-b>','<Esc>i',{noremap = true});
+ikey('<C-f>','<Esc>la',{noremap = true});
+ikey('<C-p>','<Esc>gja',{noremap = true});
+ikey('<C-n>','<Esc>gka',{noremap = true});
 
-ikey('<C-a>','<Home><S-Right>',{noremap = true});
-ikey('<C-e>','<End>',{noremap = true});
+ikey('<C-a>','<Esc>_i',{noremap = true});
+ikey('<C-e>','<Esc>$a',{noremap = true});
 
 
 
