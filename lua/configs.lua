@@ -67,8 +67,8 @@ api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
 -- For completion plugin (ddc.vim)
 ikey('<C-b>','<Esc>i',{noremap = true});
 ikey('<C-f>','<Esc>la',{noremap = true});
-ikey('<C-p>','<Esc>gja',{noremap = true});
-ikey('<C-n>','<Esc>gka',{noremap = true});
+ikey('<C-p>','<Esc>gka',{noremap = true});
+ikey('<C-n>','<Esc>gja',{noremap = true});
 
 ikey('<C-a>','<Esc>_i',{noremap = true});
 ikey('<C-e>','<Esc>$a',{noremap = true});
