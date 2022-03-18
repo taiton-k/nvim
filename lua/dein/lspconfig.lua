@@ -1,39 +1,37 @@
 --local api = vim.api;
 local fn = vim.fn;
 local cmd = vim.cmd;
-local lsp = vim.lsp;
 local diagnostic = vim.diagnostic;
 
-local diagnostic_is_enable = {};
+local is_diagnostic_enable = {};
 
-local lsp_clients_id = {};
-
-function _G.lsp_toggle_diagnostics ()
-        if not lsp_clients_id[fn.bufnr()] then
-                lsp_clients_id[fn.bufnr()] = {};
-                for id,_ in pairs(lsp.buf_get_clients(0)) do
-                        table.insert(lsp_clients_id[fn.bufnr()],id);
-                end
-        end
-
-        if diagnostic_is_enable[fn.bufnr()]==nil or diagnostic_is_enable[fn.bufnr()]==true then
-                for _,id in pairs(lsp_clients_id[fn.bufnr()]) do
-                        diagnostic.disable(0,lsp.diagnostic.get_namespace(id));
-                end
-
-                diagnostic_is_enable[fn.bufnr()] = false;
-                print('Diagnostic is disabled.');
-        else
-                for _,id in pairs(lsp_clients_id[fn.bufnr()]) do
-                        diagnostic.enable(0,lsp.diagnostic.get_namespace(id));
-                end
-
-                diagnostic_is_enable[fn.bufnr()] = true;
-                print('Diagnostic is enabled.');
+function _G.enable_diagnostics ()
+        if is_diagnostic_enable[fn.bufnr()]==false then
+                is_diagnostic_enable[fn.bufnr()] = true;
+                diagnostic.enable(0);
+                --print('Diagnostic is enabled.');
         end
 end
 
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim nnoremap <buffer> <Leader>l <Cmd>call v:lua.lsp_toggle_diagnostics()<CR>');
+function _G.disable_diagnostics ()
+        if is_diagnostic_enable[fn.bufnr()]==nil or is_diagnostic_enable[fn.bufnr()]==true then
+                is_diagnostic_enable[fn.bufnr()] = false;
+                diagnostic.disable(0);
+                --print('Diagnostic is disabled.');
+        end
+end
+
+function _G.toggle_diagnostics ()
+        if is_diagnostic_enable[fn.bufnr()]==nil or is_diagnostic_enable[fn.bufnr()]==true then
+                disable_diagnostics();
+        else
+                enable_diagnostics();
+        end
+end
+
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim nnoremap <buffer> <Leader>l <Cmd>call v:lua.toggle_diagnostics()<CR>');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim autocmd CursorHold <buffer> call v:lua.enable_diagnostics()');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim autocmd CursorMoved <buffer> call v:lua.disable_diagnostics()');
 
 local lsp_icons = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(lsp_icons) do
@@ -43,9 +41,10 @@ end
 
 
 diagnostic.config({
-  virtual_text = {
-    prefix = '● ', -- Could be '■', '▎', 'x'
-  }
+        virtual_text = {
+                prefix = '● ', -- Could be '■', '▎', 'x'
+        };
+        update_in_insert = true;
 })
 
 local lspconfig = require('lspconfig');
