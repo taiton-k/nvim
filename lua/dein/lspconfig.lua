@@ -5,31 +5,49 @@ local diagnostic = vim.diagnostic;
 
 local is_diagnostic_enable = {};
 
+local toggling_lsp = true;
+function _G.toggle_toggling_lsp ()
+        if toggling_lsp == true then
+                disable_diagnostics();
+                toggling_lsp = false;
+                print('Diagnostic is disabled.');
+        else
+                toggling_lsp = true;
+                print('Diagnostic is enabled.');
+        end
+end
+
 function _G.enable_diagnostics ()
-        if is_diagnostic_enable[fn.bufnr()]==false then
-                is_diagnostic_enable[fn.bufnr()] = true;
-                diagnostic.enable(0);
-                --print('Diagnostic is enabled.');
+        if toggling_lsp == true then
+                if is_diagnostic_enable[fn.bufnr()]==false then
+                        is_diagnostic_enable[fn.bufnr()] = true;
+                        diagnostic.enable(0);
+                        --print('Diagnostic is enabled.');
+                end
         end
 end
 
 function _G.disable_diagnostics ()
-        if is_diagnostic_enable[fn.bufnr()]==nil or is_diagnostic_enable[fn.bufnr()]==true then
-                is_diagnostic_enable[fn.bufnr()] = false;
-                diagnostic.disable(0);
-                --print('Diagnostic is disabled.');
+        if toggling_lsp == true then
+                if is_diagnostic_enable[fn.bufnr()]==nil or is_diagnostic_enable[fn.bufnr()]==true then
+                        is_diagnostic_enable[fn.bufnr()] = false;
+                        diagnostic.disable(0);
+                        --print('Diagnostic is disabled.');
+                end
         end
 end
 
 function _G.toggle_diagnostics ()
-        if is_diagnostic_enable[fn.bufnr()]==nil or is_diagnostic_enable[fn.bufnr()]==true then
-                disable_diagnostics();
-        else
-                enable_diagnostics();
+        if toggling_lsp == true then
+                if is_diagnostic_enable[fn.bufnr()]==nil or is_diagnostic_enable[fn.bufnr()]==true then
+                        disable_diagnostics();
+                else
+                        enable_diagnostics();
+                end
         end
 end
 
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim nnoremap <buffer> <Leader>l <Cmd>call v:lua.toggle_diagnostics()<CR>');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim nnoremap <buffer> <Leader>l <Cmd>call v:lua.toggle_toggling_lsp()<CR>');
 cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim autocmd CursorHold <buffer> call v:lua.enable_diagnostics()');
 cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim autocmd CursorMoved <buffer> call v:lua.disable_diagnostics()');
 
@@ -44,7 +62,7 @@ diagnostic.config({
         virtual_text = {
                 prefix = '● ', -- Could be '■', '▎', 'x'
         };
-        update_in_insert = true;
+        update_in_insert = false;
 })
 
 local lspconfig = require('lspconfig');
