@@ -61,9 +61,9 @@ api.nvim_add_user_command('Execute','!./a.out',{});
 api.nvim_add_user_command('Submit','FlTermRun acc submit',{});
 api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
 
-local CC = 'zapc++'
+local CC = 'zapcc++'
 local CFLAGS = '-Wall -Wextra -fsanitize=undefined,address -D_GLIBCXX_DEBUG -DLOCAL -O0 -std=c++17';
-api.nvim_add_user_command('Compile','FlTermRun ' .. CC .. ' ' .. CFLAGS .. ' <args> %',{nargs = '*'});
+api.nvim_add_user_command('Compile','FlTermRun ' .. CC .. ' ' .. CFLAGS .. ' <args> ' .. fn.expand("%:p"),{nargs = '*'});
 
 
 -- Emacs Keybinds
