@@ -57,10 +57,13 @@ tkey('<Esc><Esc>',[[<C-\><C-N>]],{noremap = true});
 
 api.nvim_add_user_command('H','vert help <args>',{nargs = '*',complete = 'help'});
 api.nvim_add_user_command('OjTest','FlTermRun oj t -N -d tests',{});
-api.nvim_add_user_command('Compile','!g++ -Wall -Wextra -O0 -DLOCAL <args> %',{nargs = '*'});
 api.nvim_add_user_command('Execute','!./a.out',{});
 api.nvim_add_user_command('Submit','FlTermRun acc submit',{});
 api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
+
+local CC = 'zapc++'
+local CFLAGS = '-Wall -Wextra -fsanitize=undefined,address -D_GLIBCXX_DEBUG -DLOCAL -O0 -std=c++17';
+api.nvim_add_user_command('Compile','FlTermRun ' .. CC .. ' ' .. CFLAGS .. ' <args> %',{nargs = '*'});
 
 
 -- Emacs Keybinds
