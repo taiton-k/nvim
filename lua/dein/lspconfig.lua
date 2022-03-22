@@ -110,6 +110,14 @@ lspconfig.ccls.setup({
                                 '-std=c++17',
                                 '-Wall',
                                 '-Wextra',
+                                '-Weverything',
+                                '-Wno-c++98-compat',
+                                '-Wno-c++98-compat-pedantic',
+                                '-Wno-padded',
+                                '-Wno-unused',
+                                '-Wno-macro-unused',
+                                '-DLOCAL',
+                                '-D_GLIBCXX_DEBUG',
                         };
                 };
         };
