@@ -62,7 +62,7 @@ api.nvim_add_user_command('Submit','FlTermRun acc submit',{});
 api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
 
 local CC = 'zapcc++'
-local CFLAGS = '-Wall -Wextra -fsanitize=undefined,address -D_GLIBCXX_DEBUG -DLOCAL -O0 -std=c++17';
+local CFLAGS = '-Wall -Wextra -Weverything -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded -Wno-unused -Wno-macro-unused -DLOCAL -D_GLIBCXX_DEBUG -O0 -std=c++17';
 api.nvim_add_user_command('Compile','FlTermRun ' .. CC .. ' ' .. CFLAGS .. ' <args> ' .. fn.expand("%:p"),{nargs = '*'});
 
 
