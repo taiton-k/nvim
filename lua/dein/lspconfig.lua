@@ -107,15 +107,15 @@ lspconfig.ccls.setup({
                                 '-frounding-math',
                         };
                         extraArgs = {
-                                '-std=c++17',
+                                '-std=c++1z',
                                 '-Wall',
                                 '-Wextra',
-                                '-Weverything',
+                                --'-Weverything',
                                 '-Wno-c++98-compat',
                                 '-Wno-c++98-compat-pedantic',
                                 '-Wno-padded',
                                 '-Wno-unused',
-                                '-Wno-macro-unused',
+                                '-Wno-unused-macros',
                                 '-DLOCAL',
                                 '-D_GLIBCXX_DEBUG',
                         };
