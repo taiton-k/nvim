@@ -19,7 +19,8 @@ repo = 'taiton-k/flterm.lua'
 hook_add = 'lua require("dein.flterm");'
 
 [[plugins]]
-repo = 'zah/nim.vim'
+#repo = 'zah/nim.vim'
+repo = 'alaviss/nim.nvim'
 
 
 
