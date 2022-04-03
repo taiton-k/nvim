@@ -38,6 +38,10 @@ ddc.patch_global('sourceOptions',{
         ['cmdline-history'] = {
                 mark = 'history';
         };
+        ['nvim-lsp'] = {
+                forceCompletionPattern = [[\.]];
+                timeout = 1000;
+        };
 });
 
 ddc.patch_global('filterParams',{

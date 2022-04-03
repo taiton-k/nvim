@@ -98,26 +98,29 @@ lspconfig.ccls.setup({
         init_options = {
                 cache = {
                         directory = fn.expand('~/.cache/ccls-cache');
+                        rotainInMemory = 2;
+                };
+                diagnostics = {
+                        onChange = 750;
                 };
                 index = {
-                        threads = 1;
+                        threads = 4;
+                        comments = 0;
+                };
+                highlight = {
+                        lsRanges = true;
                 };
                 clang = {
                         excludeArgs = {
                                 '-frounding-math',
                         };
                         extraArgs = {
-                                '-std=c++1z',
+                                '-std=c++17',
                                 '-Wall',
                                 '-Wextra',
                                 --'-Weverything',
-                                '-Wno-c++98-compat',
-                                '-Wno-c++98-compat-pedantic',
-                                '-Wno-padded',
                                 '-Wno-unused',
-                                '-Wno-unused-macros',
                                 '-DLOCAL',
-                                '-D_GLIBCXX_DEBUG',
                         };
                 };
         };

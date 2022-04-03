@@ -103,5 +103,5 @@ o.modelines = 0;
 
 o.helplang='ja';
 
-o.updatetime = 500;
+o.updatetime = 750;
 o.updatecount = 50;
