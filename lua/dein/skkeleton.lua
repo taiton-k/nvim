@@ -4,6 +4,7 @@ local cmd = vim.cmd;
 
 function _G.skkeleton_initialize ()
         fn['skkeleton#config']({
+                eggLikeNewline = true;
                 globalJisyo = '~/.config/skk/SKK-JISYO.Lemoji.utf8';
                 globalJisyoEncoding = 'utf-8';
                 userJisyo = '~/.config/skk/my_jisyo';
