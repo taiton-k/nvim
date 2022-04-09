@@ -118,9 +118,6 @@ lspconfig.ccls.setup({
                                 '-std=c++17',
                                 '-Wall',
                                 '-Wextra',
-                                --'-Weverything',
-                                '-Wno-unused',
-                                '-DLOCAL',
                         };
                 };
         };
