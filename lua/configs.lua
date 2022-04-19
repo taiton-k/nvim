@@ -82,6 +82,8 @@ ckey('<C-f>','<Right>',{noremap = true});
 ikey('<C-p>','<Up>',{noremap = true});
 ikey('<C-n>','<Down>',{noremap = true});
 
+ikey('<C-k>','<Nop>',{noremap = true});
+
 
 
 -- Making Colorscheme
