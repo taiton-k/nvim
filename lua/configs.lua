@@ -79,10 +79,10 @@ ikey('<C-e>','<Esc>$a',{noremap = true});
 
 ckey('<C-b>','<Left>',{noremap = true});
 ckey('<C-f>','<Right>',{noremap = true});
-ikey('<C-p>','<Up>',{noremap = true});
-ikey('<C-n>','<Down>',{noremap = true});
+ckey('<C-p>','<Up>',{noremap = true});
+ckey('<C-n>','<Down>',{noremap = true});
 
-ikey('<C-k>','<Nop>',{noremap = true});
+ikey('<C-k>','<Up>',{noremap = true});
 
 
 
