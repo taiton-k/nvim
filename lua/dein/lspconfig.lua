@@ -115,7 +115,6 @@ lspconfig.ccls.setup({
                                 '-frounding-math',
                         };
                         extraArgs = {
-                                '-std=c++17',
                                 '-Wall',
                                 '-Wextra',
                         };
