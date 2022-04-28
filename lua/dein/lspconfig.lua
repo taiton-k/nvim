@@ -107,9 +107,9 @@ lspconfig.ccls.setup({
                         threads = 4;
                         comments = 0;
                 };
-                highlight = {
-                        lsRanges = true;
-                };
+--               highlight = {
+--                       lsRanges = true;
+--               };
                 clang = {
                         excludeArgs = {
                                 '-frounding-math',
