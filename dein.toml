@@ -22,6 +22,9 @@ hook_add = 'lua require("dein.flterm");'
 #repo = 'zah/nim.vim'
 repo = 'alaviss/nim.nvim'
 
+[[plugins]]
+repo = 'tikhomirov/vim-glsl'
+
 
 
 [[plugins]]
