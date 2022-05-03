@@ -72,7 +72,7 @@ o.splitbelow = true;
 o.clipboard = 'unnamedplus,' .. o.clipboard;
 
 o.list = true;
-o.listchars = 'eol:↴'
+o.listchars = [[eol:↴,tab:>-]];
 --'eol:⋅';
 --;space:↴';
 
