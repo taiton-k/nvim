@@ -20,13 +20,11 @@ autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight! link FloatBorder VertSplit
+autocmd ColorScheme * highlight! link PumHighlightSelected Visual
 
 
 autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
 autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
-
-"for jumpcursor.vim"
-autocmd ColorScheme * highlight! link ErrorMsg Todo
 
 autocmd TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert
