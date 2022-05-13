@@ -155,7 +155,7 @@ configs.glslls = {
         }
 }
 
-lspconfig.glslls.setup{}
+--lspconfig.glslls.setup{}
 
 lspconfig.nimls.setup({
         cmd = { "nimlsp" },
