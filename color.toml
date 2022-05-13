@@ -13,3 +13,6 @@ hook_add = 'lua require("ayu").setup({});'
 
 [[plugins]]
 repo = 'taiton-k/winter-night.vim'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
