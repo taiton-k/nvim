@@ -27,6 +27,8 @@ g.skip_loading_mswin        = 1;
 
 g.mapleader = [[ ]];
 
+o.cursorcolumn = true;
+
 o.mouse = 'nv';
 o.wrap = false;
 o.wrapscan = true;
