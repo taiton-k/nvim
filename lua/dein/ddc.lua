@@ -17,6 +17,7 @@ ddc.patch_global('sourceOptions',{
                 matchers = {'matcher_fuzzy','matcher_length'};
                 sorters = {'sorter_fuzzy','sorter_rank'};
                 converters = {'converter_fuzzy','converter_remove_overlap'};
+                ignoreCase = true;
         };
         around = {
                 mark = 'A';
