@@ -55,13 +55,13 @@ ikey('<C-Space>','<C-[>',{noremap = true});
 nkey('<Esc><Esc>','<Cmd>set nohlsearch!<CR>',{noremap = true});
 tkey('<Esc><Esc>',[[<C-\><C-N>]],{noremap = true});
 
-api.nvim_add_user_command('H','vert help <args>',{nargs = '*',complete = 'help'});
-api.nvim_add_user_command('OjTest','FlTermRun oj t -N -d tests',{});
-api.nvim_add_user_command('Execute','!./a.out',{});
-api.nvim_add_user_command('Submit','FlTermRun quom main.cpp submit.cpp -I ~/Documents/KyouPuro/c++/ && acc submit',{});
-api.nvim_add_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
+api.nvim_create_user_command('H','vert help <args>',{nargs = '*',complete = 'help'});
+api.nvim_create_user_command('OjTest','FlTermRun oj t -N -d tests',{});
+api.nvim_create_user_command('Execute','!./a.out',{});
+api.nvim_create_user_command('Submit','FlTermRun quom main.cpp submit.cpp -I ~/Documents/KyouPuro/c++/ && acc submit',{});
+api.nvim_create_user_command('Acc','FlTermRun acc <args>',{nargs = '*'});
 
-api.nvim_add_user_command('Compile','FlTermRun make <args> ',{nargs = '*'});
+api.nvim_create_user_command('Compile','FlTermRun make <args> ',{nargs = '*'});
 
 
 -- Emacs Keybinds
