@@ -61,7 +61,7 @@ o.hlsearch = true;
 
 o.termguicolors = true;
 
-o.pumblend = 25;
+o.pumblend = 0;
 o.pumheight = 30;
 o.pumwidth = 10;
 

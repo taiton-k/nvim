@@ -20,7 +20,6 @@ autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight! link FloatBorder VertSplit
-autocmd ColorScheme * highlight! link PumHighlightSelected Visual
 
 autocmd WinEnter * setlocal cursorline cursorcolumn
 autocmd WinLeave * setlocal nocursorline nocursorcolumn

@@ -40,7 +40,8 @@ ddc.patch_global('sourceOptions',{
                 mark = 'history';
         };
         ['nvim-lsp'] = {
-                forceCompletionPattern = [[\.]];
+                mark = 'lsp';
+                forceCompletionPattern = [[\S.]];
                 timeout = 1000;
         };
 });
@@ -61,15 +62,19 @@ ddc.patch_global('autoCompleteEvents',{
 ddc.patch_global('backspaceCompletion',true);
 ddc.patch_global('completionMenu','pum.vim');
 
-local prev_cmdbuffer_config;
+ddc.patch_global('cmdlineSources',{'necovim','file','cmdline-history','around'});
+
+fn['ddc#enable_cmdline_completion']();
+
+--local prev_cmdbuffer_config;
 function _G.ddc_commandline_pre ()
-        prev_cmdbuffer_config = fn['ddc#custom#get_buffer']();
-        fn['ddc#custom#patch_buffer']('sources',{'necovim','file','cmdline-history','around'});
-        cmd('autocmd CmdlineLeave * ++once call v:lua.ddc_commandline_post()');
-        fn['ddc#enable_cmdline_completion']();
+        --prev_cmdbuffer_config = fn['ddc#custom#get_buffer']();
+        --fn['ddc#custom#patch_buffer']('sources',{'necovim','file','cmdline-history','around'});
+        --cmd('autocmd CmdlineLeave * ++once call v:lua.ddc_commandline_post()');
+        --fn['ddc#enable_cmdline_completion']();
 end
 function _G.ddc_commandline_post ()
-        fn['ddc#custom#set_buffer'](prev_cmdbuffer_config);
+        --fn['ddc#custom#set_buffer'](prev_cmdbuffer_config);
 end
 
 local prev_skkbuffer_config;
@@ -87,6 +92,6 @@ cmd('autocmd User skkeleton-disenable-pre call v:lua.ddc_skkeleton_post()');
 api.nvim_set_keymap('i','<TAB>',[[pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#manual_complete()]],{noremap = true,expr = true});
 api.nvim_set_keymap('!','<S-TAB>','<Cmd>call pum#map#insert_relative(-1)<CR>',{noremap = true});
 api.nvim_set_keymap('c','<TAB>',[[pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' : ddc#manual_complete()]],{noremap = true,expr = true});
-api.nvim_set_keymap('n',':','<Cmd>call v:lua.ddc_commandline_pre()<CR>:',{noremap = true});
+--api.nvim_set_keymap('n',':','<Cmd>call v:lua.ddc_commandline_pre()<CR>:',{noremap = true});
 
 fn['ddc#enable']();
