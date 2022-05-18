@@ -22,6 +22,8 @@ autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight! link FloatBorder VertSplit
 autocmd ColorScheme * highlight! link PumHighlightSelected Visual
 
+autocmd WinEnter * setlocal cursorline cursorcolumn
+autocmd WinLeave * setlocal nocursorline nocursorcolumn
 
 autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
 autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
