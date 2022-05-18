@@ -13,7 +13,7 @@ autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=none
 autocmd ColorScheme * highlight NonText ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight SpecialKey ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
+"autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
