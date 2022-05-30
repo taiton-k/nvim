@@ -16,3 +16,6 @@ repo = 'taiton-k/winter-night.vim'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'rebelot/kanagawa.nvim'
