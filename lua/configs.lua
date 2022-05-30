@@ -9,16 +9,17 @@ augroup END
 ]]);
 
 cmd([[
-autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=none
-autocmd ColorScheme * highlight NonText ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight SpecialKey ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
-"autocmd ColorScheme * highlight CursorLine ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight NormalFloat ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight Pmenu ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight Normal ctermbg=NONE guibg=none
+autocmd ColorScheme nord highlight NonText ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight SpecialKey ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight EndOfBuffer ctermbg=NONE guibg=NONE
+"autocmd ColorScheme nord highlight CursorLine ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight LineNr ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight Folded ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight SignColumn ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight NormalFloat ctermbg=NONE guibg=NONE
+autocmd ColorScheme nord highlight Pmenu ctermbg=NONE guibg=NONE
+
 autocmd ColorScheme * highlight! link FloatBorder VertSplit
 
 autocmd WinEnter * setlocal cursorline cursorcolumn

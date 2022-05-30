@@ -19,3 +19,4 @@ repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'rebelot/kanagawa.nvim'
+hook_add = 'lua require("dein.kanagawa");'
