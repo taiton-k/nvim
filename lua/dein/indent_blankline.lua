@@ -13,6 +13,9 @@ autocmd ColorScheme * highlight SpaceCharGreen  guifg=#08B808 ctermfg=106 gui=no
 autocmd ColorScheme * highlight SpaceCharAqua   guifg=#08B8B8 ctermfg=74  gui=nocombine
 autocmd ColorScheme * highlight SpaceCharBLue   guifg=#08B8B8 ctermfg=56  gui=nocombine
 autocmd ColorScheme * highlight SpaceCharPurple guifg=#0808B8 ctermfg=54  gui=nocombine
+
+autocmd CursorMoved * IndentBlanklineRefresh
+autocmd CursorMovedI * IndentBlanklineRefresh
 ]])
 
 require('indent_blankline').setup({
