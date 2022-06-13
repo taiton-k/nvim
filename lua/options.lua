@@ -82,6 +82,7 @@ o.listchars = [[eol:↴,tab:  ]];
 o.signcolumn = 'no';
 o.laststatus = 0;
 o.showtabline = 0;
+o.cmdheight = 0;
 o.showcmd = false;
 o.showmode = true;
 o.display = 'lastline';
