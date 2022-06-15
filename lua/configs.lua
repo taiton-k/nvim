@@ -25,8 +25,8 @@ autocmd ColorScheme * highlight! link FloatBorder VertSplit
 autocmd WinEnter * setlocal cursorline cursorcolumn
 autocmd WinLeave * setlocal nocursorline nocursorcolumn
 
-autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
-autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
+" autocmd InsertEnter * highlight ModeMsg gui=bold guifg=#A3BE8C
+" autocmd InsertLeave * highlight ModeMsg gui=bold guifg=#88C0D0
 
 autocmd TermOpen * startinsert
 autocmd BufEnter * if &buftype == 'terminal' | startinsert

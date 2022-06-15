@@ -30,7 +30,7 @@ g.mapleader = [[ ]];
 o.cursorline = true;
 o.cursorcolumn = true;
 
-o.mouse = 'nv';
+o.mouse = 'nvr';
 o.wrap = false;
 o.wrapscan = true;
 o.whichwrap = 'b,s,h,l,[,],<,>,~';
@@ -84,7 +84,7 @@ o.laststatus = 0;
 o.showtabline = 0;
 o.cmdheight = 0;
 o.showcmd = false;
-o.showmode = true;
+o.showmode = false;
 o.display = 'lastline';
 o.shortmess = 'aTcF';
 o.ruler = true;
