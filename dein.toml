@@ -11,8 +11,17 @@ repo = 'lukas-reineke/indent-blankline.nvim'
 hook_add = 'lua require("dein.indent_blankline");'
 
 [[plugins]]
-repo = 'skanehira/jumpcursor.vim'
-hook_add = 'map <Leader>j <Plug>(jumpcursor-jump)'
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_add = 'lua require("dein.treesitter");'
+hook_post_update = 'TSUpdate'
+
+[[plugins]]
+repo =  'neovim/nvim-lspconfig'
+hook_add = 'lua require("dein.lspconfig");'
+
+#[[plugins]]
+#repo = 'skanehira/jumpcursor.vim'
+#hook_add = 'map <Leader>j <Plug>(jumpcursor-jump)'
 
 [[plugins]]
 repo = 'taiton-k/flterm.lua'

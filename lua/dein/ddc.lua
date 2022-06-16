@@ -9,7 +9,7 @@ local ddc = {
 
 ddc.patch_global('sources',{'file','around'});
 ddc.patch_filetype({'vim'},'sources',{'nvim-lsp','necovim','file','cmdline-history','around'});
-ddc.patch_filetype({'lua','cpp','typescript','nim'},'sources',{'nvim-lsp','file','around'});
+ddc.patch_filetype({'lua','cpp','typescript','haskell','nim'},'sources',{'nvim-lsp','file','around'});
 ddc.patch_filetype({'glsl'},'sources',{'around'});
 
 ddc.patch_global('sourceOptions',{

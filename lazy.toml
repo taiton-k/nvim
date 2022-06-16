@@ -1,18 +1,18 @@
-[[plugins]]
-repo =  'neovim/nvim-lspconfig'
-on_ft = ['cpp','vim','lua','typescript','haskell','glsl','nim']
-hook_source = 'lua require("dein.lspconfig");'
+#[[plugins]]
+#repo =  'neovim/nvim-lspconfig'
+#on_ft = ['cpp','vim','lua','typescript','haskell','glsl','nim']
+#hook_source = 'lua require("dein.lspconfig");'
 
 #[[plugins]]
 #repo = 'j-hui/fidget.nvim'
 #on_source = 'nvim-lspconfig'
 #hook_source = 'lua require("dein.fidget");'
 
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-on_ft = ['cpp','vim','lua','typescript','haskell','glsl','markdown']
-hook_source = 'lua require("dein.treesitter");'
-hook_post_update = 'TSUpdate'
+#[[plugins]]
+#repo = 'nvim-treesitter/nvim-treesitter'
+#on_ft = ['cpp','vim','lua','typescript','haskell','glsl','markdown']
+#hook_source = 'lua require("dein.treesitter");'
+#hook_post_update = 'TSUpdate'
 
 [[plugins]]
 repo = 'vim-skk/skkeleton'
