@@ -165,3 +165,5 @@ lspconfig.nimls.setup({
         end,
         single_file_support = true,
 });
+
+lspconfig.hls.setup({})
