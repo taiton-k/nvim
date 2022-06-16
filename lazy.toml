@@ -1,6 +1,6 @@
 [[plugins]]
 repo =  'neovim/nvim-lspconfig'
-on_ft = ['cpp','vim','lua','typescript','glsl','nim']
+on_ft = ['cpp','vim','lua','typescript','haskell','glsl','nim']
 hook_source = 'lua require("dein.lspconfig");'
 
 #[[plugins]]
