@@ -10,7 +10,7 @@ hook_source = 'lua require("dein.lspconfig");'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-on_ft = ['cpp','vim','lua','typescript','glsl','markdown']
+on_ft = ['cpp','vim','lua','typescript','haskell','glsl','markdown']
 hook_source = 'lua require("dein.treesitter");'
 hook_post_update = 'TSUpdate'
 
