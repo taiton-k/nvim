@@ -47,9 +47,9 @@ function _G.toggle_diagnostics ()
         end
 end
 
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim nnoremap <buffer> <Leader>l <Cmd>call v:lua.toggle_toggling_lsp()<CR>');
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim autocmd CursorHold <buffer> call v:lua.enable_diagnostics()');
-cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim autocmd CursorMoved <buffer> call v:lua.disable_diagnostics()');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim,haskell nnoremap <buffer> <Leader>l <Cmd>call v:lua.toggle_toggling_lsp()<CR>');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim,haskell autocmd CursorHold <buffer> call v:lua.enable_diagnostics()');
+cmd('autocmd FileType cpp,lua,vim,glsl,typescript,nim,haskell autocmd CursorMoved <buffer> call v:lua.disable_diagnostics()');
 
 local lsp_icons = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(lsp_icons) do
@@ -166,4 +166,12 @@ lspconfig.nimls.setup({
         single_file_support = true,
 });
 
-lspconfig.hls.setup({})
+lspconfig.hls.setup({
+        settings = {
+                haskell = {
+                        checkProject = false;
+                        plugin = {
+                        }
+                }
+        }
+})
