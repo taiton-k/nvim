@@ -28,3 +28,7 @@ hook_source = 'lua require("dein.autopairs");'
 repo = 'norcalli/nvim-colorizer.lua'
 on_cmd = 'ColorizerToggle'
 hook_source = 'lua require("colorizer").setup({});'
+
+[[plugins]]
+repo = 'previm/previm'
+on_ft = ['markdown']
