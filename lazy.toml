@@ -17,6 +17,7 @@
 [[plugins]]
 repo = 'vim-skk/skkeleton'
 on_cmd = 'Skkeleton'
+on_ft = ['markdown']
 hook_source = 'lua require("dein.skkeleton");'
 
 [[plugins]]

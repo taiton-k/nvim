@@ -26,4 +26,4 @@ cmd('autocmd User skkeleton-initialize-pre call v:lua.skkeleton_initialize()');
 
 api.nvim_set_keymap('!','<C-j>','<Plug>(skkeleton-toggle)',{});
 
-api.nvim_add_user_command('Skkeleton','echo "skkeleton 起動！"',{});
+api.nvim_create_user_command('Skkeleton','echo "skkeleton 起動！"',{});
