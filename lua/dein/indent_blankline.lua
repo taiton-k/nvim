@@ -37,7 +37,7 @@ require('indent_blankline').setup({
                 'SpaceCharBLue',
                 'SpaceCharPurple',
         };
-        use_treesitter = false;
+        use_treesitter = true;
         filetype_exclude = {'help'},
         buftype_exclude = {'terminal'},
 });
