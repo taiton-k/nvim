@@ -16,6 +16,9 @@ hook_add = 'lua require("dein.treesitter");'
 hook_post_update = 'TSUpdate'
 
 [[plugins]]
+repo = 'nvim-treesitter/playground'
+
+[[plugins]]
 repo =  'neovim/nvim-lspconfig'
 hook_add = 'lua require("dein.lspconfig");'
 
