@@ -26,9 +26,12 @@ local pluginlist = {
                         require('plugins.indent_blankline')
                 end
         },
+
+
         {
                 'nvim-treesitter/nvim-treesitter',
-                ft = tslist;
+                ft = tslist,
+                run = 'TSUpdate',
                 post = function ()
                         require('plugin.treesitter')
                 end
@@ -37,6 +40,19 @@ local pluginlist = {
                 'yioneko/nvim-yati',
                 requires = 'nvim-treesitter/nvim-treesitter'
         },
+        {
+                'nvim-treesitter/playground',
+                requires = 'nvim-treesitter/nvim-treesitter',
+        },
+
+
+        {
+                'neovim/nvim-lspconfig',
+                ft = lsplist,
+                post = function ()
+                        require('plugins.lspconfig')
+                end
+        }
 }
 
 return {
