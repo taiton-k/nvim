@@ -93,35 +93,30 @@ lspconfig.sumneko_lua.setup({
 
 
 lspconfig.ccls.setup({
-        single_file_support = true;
-        root_dir = lspconfig.util.root_pattern("compile_commands.json", ".ccls", "compile_flags.txt", ".git","./") or lspconfig.util.dirname,
+        single_file_support = true,
+        root_dir = function () return "./" end,
         init_options = {
                 cache = {
-                        directory = fn.expand('~/.cache/ccls-cache');
-                        rotainInMemory = 2;
-                };
+                        directory = fn.expand('~/.cache/ccls-cache'),
+                        rotainInMemory = 2,
+                },
                 diagnostics = {
-                        onChange = 750;
-                };
+                        onChange = 750,
+                },
                 index = {
-                        threads = 4;
-                        comments = 0;
-                };
---               highlight = {
---                       lsRanges = true;
---               };
+                        threads = 4,
+                        comments = 0,
+                },
+--               highlight = { lsRanges = true; };
                 clang = {
-                        excludeArgs = {
-                                '-frounding-math',
-                        };
                         extraArgs = {
                                 '-Wall',
                                 '-Wextra',
                                 '-std=c++20'
-                        };
-                };
-        };
-});
+                        }
+                }
+        }
+})
 
 
 
