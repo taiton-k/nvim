@@ -1,4 +1,4 @@
 (namespace_definition) @indent
-"}" @indent_end
+((namespace_definition) "}" @indent_end)
 
 (template_declaration) @branch
