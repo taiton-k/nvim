@@ -13,35 +13,48 @@ if not string.match(vim.o.runtimepath, "/dein.vim") then
 end
 
 
+
+local pluginlist = require("plugins.pluginlist")
+local plugins = pluginlist.pluginlist
+
+pluginlist.hook_functions = {}
+
+local is_opts_empty = {}
+
+for repo, opts in pairs(plugins) do
+
+        is_opts_empty[repo] = true
+
+        print(repo)
+
+        for name, value in pairs(opts) do
+
+                if is_opts_empty[repo] then is_opts_empty[repo] = false end
+
+                if type(value) == "function" and string.sub(name, 1, 4) == "hook" then
+
+                        pluginlist.hook_functions[name], opts[name] = opts[name], nil
+
+                        opts[name] = "lua require('plugins.pluginlist').hook_functions['" .. name .. "']()"
+
+                        print(opts[name], ' ', pluginlist.hook_functions[name])
+                end
+
+                print(' ')
+
+        end
+end
+
+
+
 if vim.fn["dein#load_state"](dein_dir) == 1 then
         vim.fn["dein#begin"](dein_dir)
 
-        local plugins = require("plugins.pluginlist").pluginlist
+        vim.fn["dein#add"](dein_repo_dir)
 
         for repo, opts in pairs(plugins) do
 
-                local is_opts_empty = true
-
-                for name, value in pairs(opts) do
-
-                        if is_opts_empty then is_opts_empty = false end
-
-                        if type(value) == "function" then
-                                if name == "hook_add" then
-                                        value = "lua require('plugins.pluginlist').pluginlist[i].hook_add()"
-                                elseif name == "hook_source" then
-                                        value = "lua require('plugins.pluginlist').pluginlist[i].hook_source()"
-                                elseif name == "hook_post_source" then
-                                        value = "lua require('plugins.pluginlist').pluginlist[i].hook_post_source()"
-                                elseif name == "hook_post_update" then
-                                        value = "lua require('plugins.pluginlist').pluginlist[i].hook_post_update()"
-                                elseif name == "hook_done_update" then
-                                        value = "lua require('plugins.pluginlist').pluginlist[i].hook_done_update()"
-                                end
-                        end
-                end
-
-                if is_opts_empty then
+                if is_opts_empty[repo] then
                         vim.fn["dein#add"](repo)
                 else
                         vim.fn["dein#add"](repo, opts)
@@ -54,6 +67,8 @@ else
         vim.fn["dein#begin"](dein_dir)
         vim.fn["dein#end"]()
 end
+
+
 
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")

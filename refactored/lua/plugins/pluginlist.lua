@@ -13,19 +13,20 @@ local lsplist = {
 }
 
 local pluginlist = {
-        ['Shougo/dein.vim'] = {},
         ['wsdjeg/dein-ui.vim'] = {
                 lazy = true,
                 on_cmd = 'DeinUpdate',
         },
         ['vim-jp/vimdoc-ja'] = {},
         ['lukas-reineke/indent-blankline.nvim'] = {
-                hook_add = function () require('plugins.indent_blankline') end
+                lazy = true,
+                on_ft = tslist,
+                depends = 'nvim-treesitter',
+                hook_post_source = function () require('plugins.indent_blankline') end
         },
 
         ['nvim-treesitter/nvim-treesitter'] = {
                 lazy = true,
-                on_ft = tslist,
                 hook_post_update = 'TSUpdate',
                 hook_post_source = function () require('plugins.treesitter') end
         },
@@ -41,7 +42,7 @@ local pluginlist = {
 
         ['neovim/nvim-lspconfig'] = {
                 lazy = true,
-                ft = lsplist,
+                on_ft = lsplist,
                 hook_post_source = function () require('plugins.lspconfig') end
         },
         ['glepnir/lspsaga.nvim'] = {
@@ -51,7 +52,13 @@ local pluginlist = {
         },
 
         ['rebelot/kanagawa.nvim'] = {
-                hook_add = 'colorscheme kanagawa'
+                hook_add = function () vim.cmd("colorscheme kanagawa") end
+        },
+
+        ['delphinus/nekokak.nvim'] = {
+                hook_add = function ()
+                        vim.cmd("echom 'Kitayo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'")
+                end
         },
 }
 
@@ -60,5 +67,5 @@ local pluginlist = {
 return {
         pluginlist = pluginlist,
         tslist = tslist,
-        lsplist = lsplist
+        lsplist = lsplist,
 }
