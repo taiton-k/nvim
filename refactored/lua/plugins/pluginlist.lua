@@ -13,47 +13,49 @@ local lsplist = {
 }
 
 local pluginlist = {
-        {
-                'tani/vim-jetpack',
-                opt = 1
+        ['Shougo/dein.vim'] = {},
+        ['wsdjeg/dein-ui.vim'] = {
+                lazy = true,
+                on_cmd = 'DeinUpdate',
         },
-        {
-                'vim-jp/vimdoc-ja'
+        ['vim-jp/vimdoc-ja'] = {},
+        ['lukas-reineke/indent-blankline.nvim'] = {
+                hook_add = function () require('plugins.indent_blankline') end
         },
-        {
-                'lukas-reineke/indent-blankline.nvim',
-                post = function ()
-                        require('plugins.indent_blankline')
-                end
+
+        ['nvim-treesitter/nvim-treesitter'] = {
+                lazy = true,
+                on_ft = tslist,
+                hook_post_update = 'TSUpdate',
+                hook_post_source = function () require('plugins.treesitter') end
+        },
+        ['yioneko/nvim-yati'] = {
+                lazy = true,
+                on_source = 'nvim-treesitter',
+        },
+        ['nvim-treesitter/playground'] = {
+                lazy = true,
+                on_source = 'nvim-treesitter',
         },
 
 
-        {
-                'nvim-treesitter/nvim-treesitter',
-                ft = tslist,
-                run = 'TSUpdate',
-                post = function ()
-                        require('plugin.treesitter')
-                end
-        },
-        {
-                'yioneko/nvim-yati',
-                requires = 'nvim-treesitter/nvim-treesitter'
-        },
-        {
-                'nvim-treesitter/playground',
-                requires = 'nvim-treesitter/nvim-treesitter',
-        },
-
-
-        {
-                'neovim/nvim-lspconfig',
+        ['neovim/nvim-lspconfig'] = {
+                lazy = true,
                 ft = lsplist,
-                post = function ()
-                        require('plugins.lspconfig')
-                end
-        }
+                hook_post_source = function () require('plugins.lspconfig') end
+        },
+        ['glepnir/lspsaga.nvim'] = {
+                lazy = true,
+                on_source = 'nvim-lspconfig',
+                hook_post_source = function () require('plugins.lspsaga') end
+        },
+
+        ['rebelot/kanagawa.nvim'] = {
+                hook_add = 'colorscheme kanagawa'
+        },
 }
+
+
 
 return {
         pluginlist = pluginlist,

@@ -1,1 +1,1 @@
-require('plugins.jetpack')
+require('plugins.dein')
