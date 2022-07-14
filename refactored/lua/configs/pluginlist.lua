@@ -41,13 +41,61 @@ local lsp_plugins = {
         ['neovim/nvim-lspconfig'] = {
                 lazy = true,
                 on_ft = lsplist,
-                hook_post_source = function () require('configs.lspconfig') end
+                hook_post_source = function () require('configs.lspconfig') end,
+                depends = "nvim-treesitter"
         },
 
         ['glepnir/lspsaga.nvim'] = {
                 lazy = true,
                 on_source = 'nvim-lspconfig',
                 hook_post_source = function () require('configs.lspsaga') end
+        },
+}
+
+local ddc_plugins = {
+
+        ["Shougo/ddc.vim"] = {
+                lazy = true,
+                on_event = {"InsertEnter", "CmdlineEnter", "CursorHold"},
+                depends = {"denops.vim, pum.vim"},
+                hook_source = function ()
+                        require("configs.ddc")
+                end
+        },
+
+        ["Shougo/ddc-nvim-lsp"] = {
+                lazy = true,
+                on_source = "ddc.vim",
+        },
+
+        ["Shougo/ddc-around"] = {
+                lazy = true,
+                on_source = "ddc.vim"
+        },
+
+        ["LumaKernel/ddc-file"] = {
+                lazy = true,
+                on_source = "ddc.vim"
+        },
+
+        ["Shougo/neco-vim"] = {
+                lazy = true,
+                on_source = "ddc.vim"
+        },
+
+        ["Shougo/ddc-cmdline-history"] = {
+                lazy = true,
+                on_source = "ddc.vim"
+        },
+
+        ["Shougo/ddc-converter_remove_overlap"] = {
+                lazy = true,
+                on_source = "ddc.vim"
+        },
+
+        ["tani/ddc-fuzzy"] = {
+                lazy = true,
+                on_source = "ddc.vim"
         },
 }
 
@@ -71,6 +119,21 @@ local pluginlist = {
         ['rebelot/kanagawa.nvim'] = {
                 hook_add = "colorscheme kanagawa"
         },
+
+        ["vim-denops/denops.vim"] = {
+                lazy = true,
+                on_event = "CursorHold",
+                hook_post_source = function ()
+                        require("configs.denops")
+                end
+        },
+
+        ["Shougo/pum.vim"] = {
+                lazy = true,
+                hook_post_source = function ()
+                        require("configs.pum")
+                end
+        },
 }
 
 
@@ -83,6 +146,7 @@ end
 
 union(pluginlist, treesitter_plugins)
 union(pluginlist, lsp_plugins)
+union(pluginlist, ddc_plugins)
 
 return {
         pluginlist = pluginlist,

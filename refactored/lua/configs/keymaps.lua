@@ -1,37 +1,37 @@
-local nmap = function (lhs, rhs, opts)
-        vim.api.nvim_set_keymap('n', lhs, rhs, opts)
-end
-
-local imap = function (lhs, rhs, opts)
-        vim.api.nvim_set_keymap('i', lhs, rhs, opts)
-end
-
-local tmap = function (lhs, rhs, opts)
-        vim.api.nvim_set_keymap('t', lhs, rhs, opts)
-end
-
-local cmap = function (lhs, rhs, opts)
-        vim.api.nvim_set_keymap('c', lhs, rhs, opts)
-end
-
 local nnoremap = function (lhs, rhs, opts)
-        opts.noremap = true
-        nmap(lhs, rhs, opts)
+        vim.keymap.set('n', lhs, rhs, opts)
 end
 
 local inoremap = function (lhs, rhs, opts)
-        opts.noremap = true
-        imap(lhs, rhs, opts)
+        vim.keymap.set('i', lhs, rhs, opts)
 end
 
 local tnoremap = function (lhs, rhs, opts)
-        opts.noremap = true
-        tmap(lhs, rhs, opts)
+        vim.keymap.set('t', lhs, rhs, opts)
 end
 
 local cnoremap = function (lhs, rhs, opts)
-        opts.noremap = true
-        cmap(lhs, rhs, opts)
+        vim.keymap.set('c', lhs, rhs, opts)
+end
+
+local nmap = function (lhs, rhs, opts)
+        opts.noremap = false
+        nnoremap(lhs, rhs, opts)
+end
+
+local imap = function (lhs, rhs, opts)
+        opts.noremap = false
+        inoremap(lhs, rhs, opts)
+end
+
+local tmap = function (lhs, rhs, opts)
+        opts.noremap = false
+        tnoremap(lhs, rhs, opts)
+end
+
+local cmap = function (lhs, rhs, opts)
+        opts.noremap = false
+        cnoremap(lhs, rhs, opts)
 end
 
 
