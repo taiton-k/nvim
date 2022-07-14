@@ -171,31 +171,31 @@ vim.keymap.set("i", "<Tab>",
         {expr = true, silent = true}
 )
 
-vim.keymap.set("i", "<S-Tab>",
+vim.keymap.set({"i", "c"}, "<S-Tab>",
         function ()
                 vim.fn["pum#map#insert_relative"](-1)
         end
 )
 
-vim.keymap.set("i", "<C-p>",
+vim.keymap.set({"i", "c"}, "<C-p>",
         function ()
                 vim.fn["pum#map#insert_relative"](-1)
         end
 )
 
-vim.keymap.set("i", "<C-n>",
+vim.keymap.set({"i", "c"}, "<C-n>",
         function ()
                 vim.fn["pum#map#insert_relative"](1)
         end
 )
 
-vim.keymap.set("i", "<C-y>",
+vim.keymap.set({"i", "c"}, "<C-y>",
         function ()
                 vim.fn["pum#map#confirm"]()
         end
 )
 
-vim.keymap.set("i", "<C-e>",
+vim.keymap.set({"i", "c"}, "<C-e>",
         function ()
                 vim.fn["pum#map#cancel"]()
         end
