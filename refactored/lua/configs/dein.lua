@@ -14,34 +14,26 @@ end
 
 
 
-local pluginlist = require("plugins.pluginlist")
+local pluginlist = require("configs.pluginlist")
 local plugins = pluginlist.pluginlist
-
 pluginlist.hook_functions = {}
-
+local hook_functions = pluginlist.hook_functions
 local is_opts_empty = {}
 
 for repo, opts in pairs(plugins) do
 
         is_opts_empty[repo] = true
 
-        print(repo)
-
         for name, value in pairs(opts) do
 
                 if is_opts_empty[repo] then is_opts_empty[repo] = false end
 
-                if type(value) == "function" and string.sub(name, 1, 4) == "hook" then
+                if type(value) == "function" then
 
-                        pluginlist.hook_functions[name], opts[name] = opts[name], nil
+                        hook_functions[name], opts[name] = opts[name], nil
 
-                        opts[name] = "lua require('plugins.pluginlist').hook_functions['" .. name .. "']()"
-
-                        print(opts[name], ' ', pluginlist.hook_functions[name])
+                        opts[name] = "lua require('configs.pluginlist').hook_functions['" .. name .. "']()"
                 end
-
-                print(' ')
-
         end
 end
 
@@ -53,7 +45,6 @@ if vim.fn["dein#load_state"](dein_dir) == 1 then
         vim.fn["dein#add"](dein_repo_dir)
 
         for repo, opts in pairs(plugins) do
-
                 if is_opts_empty[repo] then
                         vim.fn["dein#add"](repo)
                 else
