@@ -15,22 +15,30 @@ local cnoremap = function (lhs, rhs, opts)
 end
 
 local nmap = function (lhs, rhs, opts)
-        opts.noremap = false
+        if opts and opts.noremap then
+                opts.noremap = false
+        end
         nnoremap(lhs, rhs, opts)
 end
 
 local imap = function (lhs, rhs, opts)
-        opts.noremap = false
+        if opts and opts.noremap then
+                opts.noremap = false
+        end
         inoremap(lhs, rhs, opts)
 end
 
 local tmap = function (lhs, rhs, opts)
-        opts.noremap = false
+        if opts and opts.noremap then
+                opts.noremap = false
+        end
         tnoremap(lhs, rhs, opts)
 end
 
 local cmap = function (lhs, rhs, opts)
-        opts.noremap = false
+        if opts and opts.noremap then
+                opts.noremap = false
+        end
         cnoremap(lhs, rhs, opts)
 end
 
@@ -48,16 +56,17 @@ inoremap("<C-Space>", "<C-[>")
 nnoremap("<Esc><Esc>", "<Cmd>set nohlsearch!<CR>")
 tnoremap("<Esc><Esc>", "<C-\\><C-N>")
 
-inoremap("<C-b>", "<Esc>ha")
-inoremap("<C-f>", "<Esc>la")
-imap("<C-p>", "<Esc>ka")
-imap("<C-n>", "<Esk>ja")
+imap("<C-b>", "<Left>")
+imap("<C-f>", "<Right>")
+imap("<C-p>", "<Up>")
+imap("<C-n>", "<Down>")
+
+cmap("<C-b>", "<Left>")
+cmap("<C-f>", "<Right>")
+cmap("<C-p>", "<Up>")
+cmap("<C-n>", "<Down>")
+
 inoremap("<C-a>", "<Esc>_i")
 inoremap("<C-e>", "<Esc>$a")
-
-cnoremap("<C-b>", "<Left>")
-cnoremap("<C-f>", "<Right>")
-cnoremap("<C-p>", "<Up>")
-cnoremap("<C-n>", "<Down>")
 
 inoremap("<C-k>", "<Up>")
