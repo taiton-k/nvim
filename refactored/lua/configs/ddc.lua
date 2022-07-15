@@ -69,7 +69,6 @@ vim.fn["ddc#custom#patch_filetype"](require("configs.pluginlist").lsplist, "sour
 local prev_buffer_config = nil
 
 local ddcCmdLinePost = function ()
-        vim.keymap.del('c', "<Tab>", {buffer = true})
 
         if prev_buffer_config then
                 vim.fn["ddc#custom#set_buffer"](prev_buffer_config)
@@ -87,24 +86,6 @@ local ddcCmdLinePre = function (mode)
 
         vim.o.wildchar = vim.fn.char2nr("<C-t>")
         vim.o.wildcharm = vim.fn.char2nr("<C-t>")
-
-        vim.keymap.set(
-                'c',
-                "<Tab>",
-                function ()
-                        if vim.fn["pum#visible"] then
-                                vim.fn["pum#map#insert_relative"](1)
-                                return ""
-                        else
-                                if vim.fn.exists("b:ddc_cmdline_completion") then
-                                        return vim.fn["ddc#manual_complete"]()
-                                else
-                                        return "<C-t>"
-                                end
-                        end
-                end,
-                {buffer = true, expr = true}
-        )
 
         if prev_buffer_config == nil then
                 prev_buffer_config = vim.fn["ddc#custom#get_buffer"]()
@@ -139,87 +120,194 @@ end
 
 
 
-vim.keymap.set('n', ':',
+local t = function (str)
+        return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local keymap_ids = {}
+local counter = 1
+local keymap_callbacks = {}
+
+local gen_keymap_id = function (mode, lhs, rhs)
+
+        local str = ""
+
+        if type(mode) == "string" then
+                str = mode .. lhs
+        elseif type(mode) == "table" then
+                for i in ipairs(mode) do
+                        str = str .. mode[i] .. lhs
+                end
+        end
+
+        local id
+
+        if keymap_ids[str] then
+                id = keymap_ids[str]
+        else
+                id = counter
+                counter = counter + 1
+                keymap_ids[str] = id
+        end
+
+        keymap_callbacks[id] = function ()
+                return rhs() or ""
+        end
+
+        return id
+end
+
+local call_keymap_callback = function (id)
+        return keymap_callbacks[id]()
+end
+
+local set_keymap = function (mode, lhs, rhs, opts)
+        if type(rhs) == "function" then
+                if opts then
+                        opts.expr = true
+                else
+                        opts = {
+                                expr = true
+                        }
+                end
+
+                local id = gen_keymap_id(mode, lhs, rhs)
+
+                local command = "v:lua.require('configs.ddc').call_keymap_callback(" .. id .. ")"
+
+                if type(mode) == "string" then
+                        vim.api.nvim_set_keymap(mode, lhs, command, opts)
+                else
+                        for i in ipairs(mode) do
+                                vim.api.nvim_set_keymap(mode[i], lhs, command, opts)
+                        end
+                end
+        else
+                vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+        end
+end
+
+
+
+
+
+
+set_keymap('n', ':',
         function()
                 ddcCmdLinePre(':')
                 return ':'
-        end,
-        {expr = true}
+        end
 )
 
-vim.keymap.set('n', '?',
+set_keymap('n', '?',
         function ()
                 ddcCmdLinePre('?')
                 return '?'
-        end,
-        {expr = true}
+        end
 )
 
-vim.keymap.set("i", "<Tab>",
+set_keymap("i", "<Tab>",
         function()
-                if vim.fn["pum#visible"]() then
-                        vim.fn["pum#map#insert_relative"](1)
-                        return ""
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#insert_relative"](1)
                 else
                         if vim.fn.col('.') <= 1 or vim.fn.getline('.')[vim.fn.col('.') - 1] == "\\s" then
-                                return "<Tab>"
+                                return t"<Tab>"
                         else
-                                return vim.fn["ddc#manual_complete"]()
+                                return vim.fn["ddc#map#manual_complete"]()
                         end
                 end
         end,
-        {expr = true, silent = true}
+        {silent = true}
 )
 
-vim.keymap.set({"i", "c"}, "<S-Tab>",
+set_keymap('c', "<Tab>",
         function ()
-                vim.fn["pum#map#insert_relative"](-1)
-        end
-)
-
-vim.keymap.set({"i", "c"}, "<C-p>",
-        function ()
-                vim.fn["pum#map#insert_relative"](-1)
-        end
-)
-
-vim.keymap.set({"i", "c"}, "<C-n>",
-        function ()
-                vim.fn["pum#map#insert_relative"](1)
-        end
-)
-
-vim.keymap.set({"i", "c"}, "<C-y>",
-        function ()
-                vim.fn["pum#map#confirm"]()
-        end
-)
-
-vim.keymap.set({"i", "c"}, "<C-e>",
-        function ()
-                vim.fn["pum#map#cancel"]()
-        end
-)
-
-vim.keymap.set("i", "<C-l>",
-        function ()
-                vim.fn["ddc#map#extend"]()
-        end,
-        {expr = true, silent = true}
-)
-
-vim.keymap.set("c", "<Tab>",
-        function ()
-                if vim.fn["pum#visible"]() then
-                        vim.fn["pum#map#insert_relative"](1)
-                        return ""
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#insert_relative"](1)
                 else
-                        vim.fn["ddc#manual_complete"]()
+                        return vim.fn["ddc#map#manual_complete"]()
                 end
+        end
+)
+
+set_keymap({"i", "c"}, "<S-Tab>",
+        function ()
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#insert_relative"](-1)
+                end
+        end
+)
+
+set_keymap({"i", "c"}, "<C-y>",
+        function ()
+                return vim.fn["pum#map#confirm"]()
+        end
+)
+
+set_keymap({"i", "c"}, "<C-e>",
+        function ()
+                return vim.fn["pum#map#cancel"]()
+        end
+)
+
+set_keymap("i", "<C-l>",
+        function ()
+                return vim.fn["ddc#map#extend"]()
         end,
-        {expr = true}
+        {silent = true}
+)
+
+set_keymap("i", "<Left>",
+        function ()
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#cancel"]()
+                else
+                        return t"<Left>"
+                end
+        end
+)
+
+set_keymap("i", "<Right>",
+        function ()
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#cancel"]()
+                else
+                        return t"<Right>"
+                end
+        end
+)
+
+set_keymap("i", "<Up>",
+        function ()
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#cancel"]()
+                else
+                        return t"<Up>"
+                end
+        end
+)
+
+set_keymap("i", "<Down>",
+        function ()
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#cancel"]()
+                else
+                        return t"<Down>"
+                end
+        end
+)
+
+set_keymap("n", "<C-j>",
+        function ()
+                return t"<Cmd>echom 'Kitayo!!!'<CR>"
+        end
 )
 
 
 
 vim.fn["ddc#enable"]()
+
+return {
+        call_keymap_callback = call_keymap_callback
+}
