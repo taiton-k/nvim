@@ -298,12 +298,6 @@ set_keymap("i", "<Down>",
         end
 )
 
-set_keymap("n", "<C-j>",
-        function ()
-                return t"<Cmd>echom 'Kitayo!!!'<CR>"
-        end
-)
-
 
 
 vim.fn["ddc#enable"]()
