@@ -64,7 +64,7 @@ set.termguicolors = true
 
 set.pumblend = 15
 set.pumheight = 30
-set.pumwidth = 15
+set.pumwidth = 10
 set.winblend = 15
 
 set.hidden = true

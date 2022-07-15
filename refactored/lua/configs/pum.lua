@@ -1,5 +1,5 @@
 local opts = {
-        border = 'rounded'
+        max_width = 25
 }
 
 vim.fn["pum#set_option"](opts)
