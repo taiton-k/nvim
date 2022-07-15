@@ -57,7 +57,7 @@ local ddc_plugins = {
         ["Shougo/ddc.vim"] = {
                 lazy = true,
                 on_event = {"InsertEnter", "CmdlineEnter", "CursorHold"},
-                depends = {"denops.vim, pum.vim"},
+                depends = {"denops.vim", "pum.vim"},
                 hook_source = function ()
                         require("configs.ddc")
                 end
@@ -97,6 +97,18 @@ local ddc_plugins = {
                 lazy = true,
                 on_source = "ddc.vim"
         },
+}
+
+local ddu_plugins = {
+
+        ["Shougo/ddu.vim"] = {
+                lazy = true,
+                depends = "denops.vim",
+                on_source = "denops.vim",
+                hook_post_source = function ()
+                        --require("configs.ddu")
+                end
+        }
 }
 
 local pluginlist = {
@@ -147,6 +159,7 @@ end
 union(pluginlist, treesitter_plugins)
 union(pluginlist, lsp_plugins)
 union(pluginlist, ddc_plugins)
+union(pluginlist, ddu_plugins)
 
 return {
         pluginlist = pluginlist,
