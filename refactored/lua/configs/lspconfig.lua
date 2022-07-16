@@ -1,4 +1,5 @@
-local lspconfig = require('lspconfig');
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig.configs')
 
 lspconfig.sumneko_lua.setup({
         cmd = {
@@ -22,8 +23,6 @@ lspconfig.sumneko_lua.setup({
                 }
         }
 })
-
-
 
 lspconfig.ccls.setup({
         single_file_support = true,
@@ -63,7 +62,7 @@ lspconfig.denols.setup({
 })
 
 
-lspconfig.configs.glslls = {
+configs.glslls = {
         default_config = {
                 cmd = {
                         'glslls',

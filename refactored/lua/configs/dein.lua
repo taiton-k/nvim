@@ -24,22 +24,24 @@ for repo, opts in pairs(plugins) do
 
         is_opts_empty[repo] = true
 
-        for name, value in pairs(opts) do
+        hook_functions[repo] = {}
+
+        for item, value in pairs(opts) do
 
                 if is_opts_empty[repo] then is_opts_empty[repo] = false end
 
                 if type(value) == "function" then
 
-                        hook_functions[name], opts[name] = opts[name], nil
+                        hook_functions[repo][item], opts[item] = opts[item], nil
 
-                        opts[name] = "lua require('configs.pluginlist').hook_functions['" .. name .. "']()"
+                        opts[item] = "lua require('configs.pluginlist').hook_functions['" .. repo .. "']['" .. item .. "']()"
                 end
         end
 end
 
 
 
-if vim.fn["dein#load_state"](dein_dir) == 1 then
+if vim.fn["dein#min#load_state"](dein_dir) == 1 then
         vim.fn["dein#begin"](dein_dir)
 
         vim.fn["dein#add"](dein_repo_dir)
@@ -71,3 +73,9 @@ if vim.fn["dein#check_install"]() == 1 then
                 vim.fn["dein#install"]()
         end
 end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function ()
+                vim.fn["dein#call_hook"]("post_source")
+        end
+})

@@ -18,6 +18,7 @@ local treesitter_plugins = {
 
         ['nvim-treesitter/nvim-treesitter'] = {
                 lazy = true,
+                on_ft = tslist,
                 hook_post_update = 'TSUpdate',
                 hook_post_source = function ()
                         require('configs.treesitter')
@@ -41,8 +42,9 @@ local lsp_plugins = {
         ['neovim/nvim-lspconfig'] = {
                 lazy = true,
                 on_ft = lsplist,
-                hook_post_source = function () require('configs.lspconfig') end,
-                depends = "nvim-treesitter"
+                hook_post_source = function ()
+                        require('configs.lspconfig')
+                end,
         },
 
         ['glepnir/lspsaga.nvim'] = {
@@ -129,7 +131,7 @@ local pluginlist = {
         },
 
         ['rebelot/kanagawa.nvim'] = {
-                hook_add = "colorscheme kanagawa"
+                hook_add = "autocmd VimEnter * colorscheme kanagawa"
         },
 
         ["vim-denops/denops.vim"] = {
