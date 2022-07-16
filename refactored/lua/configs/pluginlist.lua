@@ -131,7 +131,7 @@ local pluginlist = {
         },
 
         ['rebelot/kanagawa.nvim'] = {
-                hook_add = "autocmd VimEnter * colorscheme kanagawa"
+                hook_add = "colorscheme kanagawa"
         },
 
         ["vim-denops/denops.vim"] = {
