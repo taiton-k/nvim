@@ -92,9 +92,12 @@ lspconfig.sumneko_lua.setup({
 
 
 
+local util = require("lspconfig.util")
 lspconfig.ccls.setup({
         single_file_support = true,
-        root_dir = function () return "./" end,
+        root_dir = function (fname)
+                return util.root_pattern(".ccls", "./")(fname) or util.find_git_ancestor(fname)
+        end,
         init_options = {
                 cache = {
                         directory = fn.expand('~/.cache/ccls-cache'),
