@@ -16,8 +16,12 @@ end
 
 local pluginlist = require("configs.pluginlist")
 local plugins = pluginlist.pluginlist
+
 pluginlist.hook_functions = {}
+pluginlist.ftplugin_functions = {}
 local hook_functions = pluginlist.hook_functions
+local ftplugin_functions = pluginlist.ftplugin_functions
+
 local is_opts_empty = {}
 
 for repo, opts in pairs(plugins) do
@@ -31,10 +35,17 @@ for repo, opts in pairs(plugins) do
                 if is_opts_empty[repo] then is_opts_empty[repo] = false end
 
                 if type(value) == "function" then
-
                         hook_functions[repo][item], opts[item] = opts[item], nil
 
                         opts[item] = "lua require('configs.pluginlist').hook_functions['" .. repo .. "']['" .. item .. "']()"
+                elseif item == "ftplugin" then
+                        ftplugin_functions[repo] = {}
+                        for ft, _ in pairs(value) do
+                                if type(value[ft]) == "function" then
+                                        ftplugin_functions[repo][ft], value[ft] = value[ft], nil
+                                        value[ft] = "lua require('configs.pluginlist').ftplugin_functions['" .. repo .."']['" .. ft .. "']()"
+                                end
+                        end
                 end
         end
 end
