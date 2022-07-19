@@ -101,16 +101,50 @@ local ddc_plugins = {
         },
 }
 
+local ddu_child_opts = {
+        lazy = true,
+        on_source = "ddu.vim"
+}
 local ddu_plugins = {
 
         ["Shougo/ddu.vim"] = {
                 lazy = true,
                 depends = "denops.vim",
                 on_source = "denops.vim",
-                hook_post_source = function ()
-                        --require("configs.ddu")
-                end
-        }
+                hook_add = require("configs.ddu").hook_add,
+                hook_post_source = require("configs.ddu").hook_post_source,
+                ftplugin = require("configs.ddu").ftplugin
+        },
+
+        ["Shougo/ddu-commands.vim"] = {
+                lazy = true,
+                depends = "ddu.vim",
+                on_cmd = "Ddu"
+        },
+
+        ["Shougo/ddu-ui-ff"] = ddu_child_opts,
+
+        ["Shougo/ddu-ui-filer"] = ddu_child_opts,
+
+        ["Shougo/ddu-kind-file"] = ddu_child_opts,
+
+        ["Shougo/ddu-kind-word"] = ddu_child_opts,
+
+        ["shun/ddu-source-buffer"] = ddu_child_opts,
+
+        ["Shougo/ddu-source-file_rec"] = ddu_child_opts,
+
+        ["matsui54/ddu-source-help"] = ddu_child_opts,
+
+        ["yuki-yano/ddu-filter-fzf"] = ddu_child_opts,
+
+        ["Shougo/ddu-column-filename"] = ddu_child_opts,
+
+        ["4513ECHO/ddu-source-source"] = ddu_child_opts,
+
+        ["Shougo/ddu-source-action"] = ddu_child_opts,
+
+        ["ryota2357/ddu-column-icon_filename"] = ddu_child_opts
 }
 
 local pluginlist = {
