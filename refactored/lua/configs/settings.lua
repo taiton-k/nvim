@@ -31,7 +31,7 @@ set.cursorcolumn = true
 
 set.mouse = "nvr"
 
-set.wrap = true
+set.wrap = false
 
 set.wrapscan = true
 
