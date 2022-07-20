@@ -56,10 +56,28 @@ inoremap("<C-Space>", "<C-[>")
 nnoremap("<Esc><Esc>", "<Cmd>set nohlsearch!<CR>")
 tnoremap("<Esc><Esc>", "<C-\\><C-N>")
 
-imap("<C-b>", "<Esc>ha")
-imap("<C-f>", "<Right>")
-imap("<C-p>", "<Up>")
-imap("<C-n>", "<Down>")
+imap("<C-b>",
+        function ()
+                if vim.fn.col(".") == 2 then
+                        return "<Esc>i"
+                else
+                        return "<Esc>ha"
+                end
+        end,
+        {expr = true}
+)
+imap("<C-f>",
+        function ()
+                if vim.fn.col(".") == vim.fn.col("$") then
+                        return "<Esc>li"
+                else
+                        return "<Esc>la"
+                end
+        end,
+        {expr = true}
+)
+imap("<C-p>", "<Esc>ka")
+imap("<C-n>", "<Esc>ja")
 
 cmap("<C-b>", "<Left>")
 cmap("<C-f>", "<Right>")
