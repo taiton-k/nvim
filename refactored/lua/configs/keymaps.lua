@@ -56,7 +56,7 @@ inoremap("<C-Space>", "<C-[>")
 nnoremap("<Esc><Esc>", "<Cmd>set nohlsearch!<CR>")
 tnoremap("<Esc><Esc>", "<C-\\><C-N>")
 
-imap("<C-b>", "<Left>")
+imap("<C-b>", "<Esc>ha")
 imap("<C-f>", "<Right>")
 imap("<C-p>", "<Up>")
 imap("<C-n>", "<Down>")

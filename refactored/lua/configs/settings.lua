@@ -20,7 +20,7 @@ vim.g.loaded_shada_plugin       = 1
 vim.g.loaded_spellfile_plugin   = 1
 vim.g.loaded_tutor_mode_plugin  = 1
 vim.g.skip_loading_mswin        = 1
-vim.g.loaded_matchparen         = 0
+--vim.g.loaded_matchparen         = 1
 
 vim.g.mapleader = " "
 
@@ -106,3 +106,5 @@ set.helplang = "ja"
 
 set.updatetime = 750
 set.updatecount = 50
+
+set.virtualedit = "block"

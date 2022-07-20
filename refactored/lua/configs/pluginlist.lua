@@ -52,6 +52,19 @@ local lsp_plugins = {
                 on_source = 'nvim-lspconfig',
                 hook_post_source = function () require('configs.lspsaga') end
         },
+
+        ["matsui54/denops-popup-preview.vim"] = {
+                lazy = true,
+                depends = "denops.vim",
+                hook_post_source = "call popup_preview#enable()"
+        },
+
+        ["matsui54/denops-signature_help"] = {
+                lazy = true,
+                on_source = "nvim-lspconfig",
+                depends = "denops-popup-preview.vim",
+                hook_post_source = "call signature_help#enable()"
+        }
 }
 
 local ddc_plugins = {
@@ -166,6 +179,17 @@ local pluginlist = {
 
         ['rebelot/kanagawa.nvim'] = {
                 hook_add = "colorscheme kanagawa"
+        },
+
+        ["windwp/nvim-autopairs"] = {
+                lazy = true,
+                on_event = "InsertEnter",
+                hook_post_source = function ()
+                        require('nvim-autopairs').setup({
+                                map_c_h = true;
+                                map_cr = true;
+                        })
+                end
         },
 
         ["vim-denops/denops.vim"] = {

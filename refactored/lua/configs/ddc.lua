@@ -247,7 +247,11 @@ set_keymap({"i", "c"}, "<C-y>",
 
 set_keymap({"i", "c"}, "<C-e>",
         function ()
-                return vim.fn["pum#map#cancel"]()
+                if vim.fn["pum#visible"]() == 1 then
+                        return vim.fn["pum#map#cancel"]()
+                else
+                        return t"<C-e>"
+                end
         end
 )
 
