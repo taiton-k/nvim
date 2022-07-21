@@ -145,6 +145,8 @@ local ddu_plugins = {
 
         ["shun/ddu-source-buffer"] = ddu_child_opts,
 
+        ["Shougo/ddu-source-file"] = ddu_child_opts,
+
         ["Shougo/ddu-source-file_rec"] = ddu_child_opts,
 
         ["matsui54/ddu-source-help"] = ddu_child_opts,
