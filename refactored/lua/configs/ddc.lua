@@ -245,16 +245,6 @@ set_keymap({"i", "c"}, "<C-y>",
         end
 )
 
-set_keymap({"i", "c"}, "<C-e>",
-        function ()
-                if vim.fn["pum#visible"]() == 1 then
-                        return vim.fn["pum#map#cancel"]()
-                else
-                        return t"<C-e>"
-                end
-        end
-)
-
 set_keymap("i", "<C-l>",
         function ()
                 return vim.fn["ddc#map#extend"]()
@@ -262,45 +252,8 @@ set_keymap("i", "<C-l>",
         {silent = true}
 )
 
-set_keymap("i", "<Left>",
-        function ()
-                if vim.fn["pum#visible"]() == 1 then
-                        return vim.fn["pum#map#cancel"]()
-                else
-                        return t"<Left>"
-                end
-        end
-)
 
-set_keymap("i", "<Right>",
-        function ()
-                if vim.fn["pum#visible"]() == 1 then
-                        return vim.fn["pum#map#cancel"]()
-                else
-                        return t"<Right>"
-                end
-        end
-)
 
-set_keymap("i", "<Up>",
-        function ()
-                if vim.fn["pum#visible"]() == 1 then
-                        return vim.fn["pum#map#cancel"]()
-                else
-                        return t"<Up>"
-                end
-        end
-)
-
-set_keymap("i", "<Down>",
-        function ()
-                if vim.fn["pum#visible"]() == 1 then
-                        return vim.fn["pum#map#cancel"]()
-                else
-                        return t"<Down>"
-                end
-        end
-)
 
 
 
