@@ -2,7 +2,7 @@ vim.g["dein#auto_recache"] = true
 vim.g["dein#install_max_process"] = 16
 vim.g["dein#auto_remote_plugins"] = false
 
-local dein_dir = vim.fn.expand("~/.cache/deinre/")
+local dein_dir = vim.fn.expand("~/.cache/dein/")
 local dein_repo_dir = dein_dir .. "repos/github.com/Shougo/dein.vim"
 
 if not string.match(vim.o.runtimepath, "/dein.vim") then
