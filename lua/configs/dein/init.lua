@@ -49,12 +49,7 @@ vim.cmd("filetype plugin indent on")
 vim.cmd("syntax enable")
 
 if vim.fn["dein#check_install"]() == 1 then
-        print(vim.fn.exists(":DeinUpdate") == 1)
-        if vim.fn.exists(":DeinUpdate") == 1 then
-                vim.cmd("DeinUpdate")
-        else
-                vim.fn["dein#install"]()
-        end
+        vim.fn["dein#install"]()
 end
 
 vim.api.nvim_create_autocmd("VimEnter", {
