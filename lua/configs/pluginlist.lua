@@ -107,13 +107,16 @@ local snippets_plugins = {
 
         ["hrsh7th/vim-vsnip"] = {
                 lazy = true,
+                on_source = "ddc.vim"
         },
 
         ["hrsh7th/vim-vsnip-integ"] = {
                 lazy = true,
-                on_source = "nvim-lspconfig",
+                on_source = "nvim-lspconfig, ddc.vim",
                 depends = "vim-vsnip",
-        }
+        },
+
+        ["rafamadriz/friendly-snippets"] = {},
 }
 
 
@@ -186,7 +189,17 @@ local pluginlist = {
         },
 
         ['rebelot/kanagawa.nvim'] = {
-                hook_add = "colorscheme kanagawa"
+                hook_add = function ()
+                        require("kanagawa").setup({
+                                overrides = {
+                                        Normal = {
+                                                bg = "NONE"
+                                        }
+                                }
+                        })
+
+                        vim.cmd("colorscheme kanagawa")
+                end
         },
 
         ["windwp/nvim-autopairs"] = {
