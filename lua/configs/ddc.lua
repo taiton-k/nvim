@@ -34,6 +34,9 @@ vim.fn["ddc#custom#patch_global"]({
                         mark = 'L',
                         forceCompletionPattern = [[\S.]],
                         timeout = 1000,
+                },
+                vsnip = {
+                        mark = "S",
                 }
         },
         autoCompleteEvents = {
