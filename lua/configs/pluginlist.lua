@@ -37,6 +37,8 @@ local treesitter_plugins = {
         },
 }
 
+
+
 local lsp_plugins = {
 
         ['neovim/nvim-lspconfig'] = {
@@ -64,9 +66,15 @@ local lsp_plugins = {
                 on_source = "nvim-lspconfig",
                 depends = "denops-popup-preview.vim",
                 hook_post_source = "call signature_help#enable()"
-        }
+        },
 }
 
+
+
+local ddc_child_opts = {
+        lazy = true,
+        on_source = "ddc.vim"
+}
 local ddc_plugins = {
 
         ["Shougo/ddc.vim"] = {
@@ -78,41 +86,37 @@ local ddc_plugins = {
                 end
         },
 
-        ["Shougo/ddc-nvim-lsp"] = {
-                lazy = true,
-                on_source = "ddc.vim",
-        },
+        ["Shougo/ddc-nvim-lsp"] = ddc_child_opts,
 
-        ["Shougo/ddc-around"] = {
-                lazy = true,
-                on_source = "ddc.vim"
-        },
+        ["Shougo/ddc-around"] = ddc_child_opts,
 
-        ["LumaKernel/ddc-file"] = {
-                lazy = true,
-                on_source = "ddc.vim"
-        },
+        ["LumaKernel/ddc-file"] = ddc_child_opts,
 
-        ["Shougo/neco-vim"] = {
-                lazy = true,
-                on_source = "ddc.vim"
-        },
+        ["Shougo/neco-vim"] = ddc_child_opts,
 
-        ["Shougo/ddc-cmdline-history"] = {
-                lazy = true,
-                on_source = "ddc.vim"
-        },
+        ["Shougo/ddc-cmdline-history"] = ddc_child_opts,
 
-        ["Shougo/ddc-converter_remove_overlap"] = {
-                lazy = true,
-                on_source = "ddc.vim"
-        },
+        ["Shougo/ddc-converter_remove_overlap"] = ddc_child_opts,
 
-        ["tani/ddc-fuzzy"] = {
-                lazy = true,
-                on_source = "ddc.vim"
-        },
+        ["tani/ddc-fuzzy"] = ddc_child_opts,
 }
+
+
+
+local snippets_plugins = {
+
+        ["hrsh7th/vim-vsnip"] = {
+                lazy = true,
+        },
+
+        ["hrsh7th/vim-vsnip-integ"] = {
+                lazy = true,
+                on_source = "nvim-lspconfig",
+                depends = "vim-vsnip",
+        }
+}
+
+
 
 local ddu_child_opts = {
         lazy = true,
@@ -161,6 +165,8 @@ local ddu_plugins = {
 
         ["ryota2357/ddu-column-icon_filename"] = ddu_child_opts
 }
+
+
 
 local pluginlist = {
 
@@ -222,6 +228,7 @@ union(pluginlist, treesitter_plugins)
 union(pluginlist, lsp_plugins)
 union(pluginlist, ddc_plugins)
 union(pluginlist, ddu_plugins)
+union(pluginlist, snippets_plugins)
 
 return {
         pluginlist = pluginlist,
