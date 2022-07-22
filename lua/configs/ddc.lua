@@ -182,7 +182,7 @@ set_keymap("i", "<Tab>",
                 if pum.is_visible() then
                         pum.insert_relative(1)
                 else
-                        if vim.fn.col('.') <= 1 or vim.fn.getline('.')[vim.fn.col('.') - 1] == "\\s" then
+                        if vim.fn.col('.') <= 1 or vim.api.nvim_eval("getline('.')[col('.') - 2] =~# '\\s'") then
                                 return "<Tab>"
                         else
                                 return "<Plug>DdcManualComplete;"
