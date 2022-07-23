@@ -96,3 +96,64 @@ lspconfig.hls.setup({
         }
 })
 
+
+
+local diagnostic = vim.diagnostic;
+
+diagnostic.config({
+        virtual_text = {
+                prefix = '● ',
+        },
+        update_in_insert = false,
+})
+
+
+
+local diagnostic_is_hidden = {}
+local diagnostic_is_enable = true
+
+local showDiagnostic = function ()
+        if diagnostic_is_hidden[vim.fn.bufnr()] and diagnostic_is_enable then
+                diagnostic_is_hidden[vim.fn.bufnr()] = false
+                diagnostic.enable(0)
+        end
+end
+
+local hideDiagnostic = function ()
+        if (not diagnostic_is_hidden[vim.fn.bufnr()]) and diagnostic_is_enable then
+                diagnostic_is_hidden[vim.fn.bufnr()] = true
+                diagnostic.disable(0)
+        end
+end
+
+local toggleDiagnostic = function ()
+        if diagnostic_is_enable then
+                hideDiagnostic()
+                diagnostic_is_enable = false
+                print("Diagnostic was disabled.")
+        else
+                showDiagnostic()
+                diagnostic_is_enable = true
+                print("Diagnostic was enabled.")
+        end
+end
+
+local setAutocmd = function ()
+        vim.api.nvim_create_autocmd("CursorMoved", {
+                callback = hideDiagnostic,
+                buffer = 0,
+        })
+        vim.api.nvim_create_autocmd("CursorHold", {
+                callback = showDiagnostic,
+                buffer = 0,
+        })
+end
+
+setAutocmd()
+
+vim.api.nvim_create_autocmd("FileType", {
+        pattern = vim.fn["dein#get"]("nvim-lspconfig").on_ft,
+        callback = setAutocmd
+})
+
+vim.keymap.set("n", "<Leader>l", toggleDiagnostic)
