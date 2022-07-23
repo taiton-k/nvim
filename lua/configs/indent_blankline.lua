@@ -25,20 +25,6 @@ vim.api.nvim_create_autocmd(
 )
 
 
-vim.api.nvim_create_autocmd(
-        'CursorMoved',
-        {
-                command = 'IndentBlanklineRefresh'
-        }
-)
-
-vim.api.nvim_create_autocmd(
-        'CursorMovedI',
-        {
-                command = 'IndentBlanklineRefresh'
-        }
-)
-
 require('indent_blankline').setup({
         char_highlight_list = {
                 'IndentLineRed',
@@ -62,3 +48,18 @@ require('indent_blankline').setup({
         filetype_exclude = {'help'},
         buftype_exclude = {'terminal'},
 })
+
+
+vim.api.nvim_create_autocmd(
+        'CursorMoved',
+        {
+                command = 'IndentBlanklineRefresh'
+        }
+)
+
+vim.api.nvim_create_autocmd(
+        'CursorMovedI',
+        {
+                command = 'IndentBlanklineRefresh'
+        }
+)
