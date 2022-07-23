@@ -1,5 +1,6 @@
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
+local util = require("lspconfig.util")
 
 lspconfig.sumneko_lua.setup({
         cmd = {
@@ -26,8 +27,9 @@ lspconfig.sumneko_lua.setup({
 
 lspconfig.ccls.setup({
         single_file_support = true,
-        root_dir = function () return "./" end,
+        root_dir =  util.root_pattern("*"),
         init_options = {
+                compilationDatabaseDirectory = "build",
                 cache = {
                         directory = vim.fn.expand('~/.cache/ccls-cache'),
                         rotainInMemory = 2,
@@ -49,7 +51,6 @@ lspconfig.ccls.setup({
                 }
         }
 })
-
 
 
 
