@@ -50,12 +50,6 @@ local lsp_plugins = {
                 end,
         },
 
-        ['glepnir/lspsaga.nvim'] = {
-                lazy = true,
-                on_source = 'nvim-lspconfig',
-                hook_post_source = function () require('configs.lspsaga') end
-        },
-
         ["matsui54/denops-popup-preview.vim"] = {
                 lazy = true,
                 depends = "denops.vim",
@@ -205,9 +199,21 @@ local pluginlist = {
                 on_event = "VimEnter",
                 hook_post_source = function ()
                         require("toggleterm").setup({
-                                size = vim.o.lines / 4,
+                                size = function ()
+                                        if vim.o.lines < vim.o.columns / 2 then
+                                                return vim.o.columns * 0.4
+                                        else
+                                                return vim.o.lines * 0.4
+                                        end
+                                end,
                                 open_mapping = "<C-t>",
-                                direction = "horizontal"
+                                direction = (function ()
+                                        if vim.o.lines < vim.o.columns / 2 then
+                                                return "vertical"
+                                        else
+                                                return "horizontal"
+                                        end
+                                end)(),
                         })
 
                         vim.api.nvim_create_autocmd("BufEnter", {
