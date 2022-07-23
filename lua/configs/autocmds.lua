@@ -34,15 +34,3 @@ autocmd({"CursorMoved", "CursorMovedI"}, {
                 end
         end
 })
-
-autocmd("TermOpen", {
-        command = 'startinsert'
-})
-
-autocmd("BufEnter", {
-        callback = function ()
-                if vim.o.buftype == "terminal" then
-                        vim.cmd("startinsert")
-                end
-        end
-})
