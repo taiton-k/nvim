@@ -1,6 +1,4 @@
-local ddc = {}
-
-ddc.hook_post_source = function ()
+local hook_post_source = function ()
 
         vim.fn["ddc#custom#patch_global"]({
                 sources = {
@@ -62,7 +60,7 @@ ddc.hook_post_source = function ()
                 "around"
         })
 
-        vim.fn["ddc#custom#patch_filetype"](require("configs.pluginlist").lsplist, "sources", {
+        vim.fn["ddc#custom#patch_filetype"](vim.fn["dein#get"]("nvim-lspconfig").on_ft, "sources", {
                 "nvim-lsp",
                 "file",
                 "around"
@@ -103,10 +101,10 @@ ddc.hook_post_source = function ()
                         if pum.is_visible() then
                                 pum.insert_relative(1)
                         else
-                                if vim.fn.col('.') <= 1 or vim.api.nvim_eval("getline('.')[col('.') - 2] =~# '\\s'") ~= 0 then
-                                        return "<Tab>"
-                                else
+                                if vim.fn.col('.') <= 1 or vim.api.nvim_eval("getline('.')[col('.') - 2] =~# '\\s'") == 0 then
                                         return "<Plug>DdcManualComplete;"
+                                else
+                                        return "<Tab>"
                                 end
                         end
                 end,
@@ -157,80 +155,102 @@ ddc.hook_post_source = function ()
         vim.fn["ddc#enable"]()
 end
 
-
-
-
-
-ddc.hook_add = function ()
+local hook_add = function ()
 
         local prev_buffer_config = nil
 
-        local ddcCmdLinePost = function ()
+        vim.api.nvim_create_autocmd("CmdlineEnter", {
+                callback = function (arg)
 
-                if prev_buffer_config then
-                        vim.fn["ddc#custom#set_buffer"](prev_buffer_config)
-                        prev_buffer_config = nil
-                else
-                        vim.fn["ddc#custom#set_buffer"]()
-                        print("ddc some error occurred")
-                end
+                        local mode = arg.match
 
-                vim.o.wildchar = vim.fn.char2nr("<Tab>")
-                vim.o.wildcharm = vim.fn.char2nr("<Tab>")
-        end
+                        vim.fn["dein#source"]("ddc.vim")
 
-        local ddcCmdLinePre = function (mode)
+                        vim.o.wildchar = vim.fn.char2nr("<C-t>")
+                        vim.o.wildcharm = vim.fn.char2nr("<C-t>")
 
-                vim.fn["dein#source"]("ddc.vim")
-
-                vim.o.wildchar = vim.fn.char2nr("<C-t>")
-                vim.o.wildcharm = vim.fn.char2nr("<C-t>")
-
-                if prev_buffer_config == nil then
-                        prev_buffer_config = vim.fn["ddc#custom#get_buffer"]()
-                end
-
-                if mode == ':' then
-                        vim.fn["ddc#custom#patch_buffer"]({
-                                cmdlineSources = {
-                                        "necovim",
-                                        "file",
-                                        "cmdline-history",
-                                        "around"
-                                },
-                                keywordPattern = "[0-9a-zA-Z_:#]*",
-                        })
-                else
-                        vim.fn["ddc#custom#patch_buffer"]("cmdlineSources", {"around"})
-                end
-
-                vim.api.nvim_create_autocmd("CmdlineLeave", {
-                        once = true,
-                        callback = function ()
-                                ddcCmdLinePost()
+                        if prev_buffer_config == nil then
+                                prev_buffer_config = vim.fn["ddc#custom#get_buffer"]()
                         end
-                })
 
-                vim.fn["ddc#enable_cmdline_completion"]()
-        end
+                        if mode == ':' then
+                                vim.fn["ddc#custom#patch_buffer"]({
+                                        cmdlineSources = {
+                                                "cmdline",
+                                                "cmdline-history",
+                                                "around",
+                                                "necovim",
+                                                "file",
+                                        },
+                                        keywordPattern = "[0-9a-zA-Z_:#]*",
+                                })
+                        else
+                                vim.fn["ddc#custom#patch_buffer"]("cmdlineSources", {"around"})
+                        end
 
-        vim.keymap.set('n', ':',
-                function()
-                        ddcCmdLinePre(':')
-                        return ':'
-                end,
-                {expr = true}
-        )
+                        vim.fn["ddc#enable_cmdline_completion"]()
+                end
+        })
 
-        vim.keymap.set('n', '?',
-                function ()
-                        ddcCmdLinePre('?')
-                        return '?'
-                end,
-                {expr = true}
-        )
+        vim.api.nvim_create_autocmd("CmdlineLeave", {
+                callback = function ()
+
+                        if prev_buffer_config then
+                                vim.fn["ddc#custom#set_buffer"](prev_buffer_config)
+                                prev_buffer_config = nil
+                        else
+                                print("ddc some error occurred")
+                                vim.fn["ddc#custom#set_buffer"]()
+                        end
+
+                        vim.o.wildchar = vim.fn.char2nr("<Tab>")
+                        vim.o.wildcharm = vim.fn.char2nr("<Tab>")
+                end
+        })
 end
 
+local ddc_plugins = {
 
+        ["Shougo/ddc.vim"] = {
+                lazy = true,
+                on_event = {"InsertEnter", "CursorHold"},
+                depends = {"denops.vim", "pum.vim"},
+                hook_post_source = hook_post_source,
+                hook_add = hook_add,
+        },
 
-return ddc
+        ["Shougo/ddc-nvim-lsp"] = {},
+
+        ["Shougo/ddc-around"] = {},
+
+        ["LumaKernel/ddc-file"] = {},
+
+        ["Shougo/ddc-cmdline"] = {},
+
+        ["Shougo/neco-vim"] = {},
+
+        ["Shougo/ddc-cmdline-history"] = {},
+
+        ["Shougo/ddc-converter_remove_overlap"] = {},
+
+        ["tani/ddc-fuzzy"] = {},
+}
+
+for _, opts in pairs(ddc_plugins) do
+
+        local opts_is_empty = true
+
+        for _, _ in pairs(opts) do
+                opts_is_empty = false
+                break
+        end
+
+        if opts_is_empty then
+                opts = {
+                        lazy = true,
+                        on_source = "ddc.vim"
+                }
+        end
+end
+
+return ddc_plugins
