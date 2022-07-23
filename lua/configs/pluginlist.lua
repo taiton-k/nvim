@@ -46,6 +46,7 @@ local lsp_plugins = {
                 on_ft = lsplist,
                 hook_post_source = function ()
                         require('configs.lspconfig')
+                        vim.cmd("LspStart")
                 end,
         },
 
@@ -67,38 +68,6 @@ local lsp_plugins = {
                 depends = "denops-popup-preview.vim",
                 hook_post_source = "call signature_help#enable()"
         },
-}
-
-
-
-local ddc_child_opts = {
-        lazy = true,
-        on_source = "ddc.vim"
-}
-local ddc_plugins = {
-
-        ["Shougo/ddc.vim"] = {
-                lazy = true,
-                on_event = {"InsertEnter", "CmdlineEnter", "CursorHold"},
-                depends = {"denops.vim", "pum.vim"},
-                hook_source = function ()
-                        require("configs.ddc")
-                end
-        },
-
-        ["Shougo/ddc-nvim-lsp"] = ddc_child_opts,
-
-        ["Shougo/ddc-around"] = ddc_child_opts,
-
-        ["LumaKernel/ddc-file"] = ddc_child_opts,
-
-        ["Shougo/neco-vim"] = ddc_child_opts,
-
-        ["Shougo/ddc-cmdline-history"] = ddc_child_opts,
-
-        ["Shougo/ddc-converter_remove_overlap"] = ddc_child_opts,
-
-        ["tani/ddc-fuzzy"] = ddc_child_opts,
 }
 
 
@@ -224,7 +193,30 @@ local pluginlist = {
         ["Shougo/pum.vim"] = {
                 lazy = true,
                 hook_post_source = function ()
-                        require("configs.pum")
+                        vim.fn["pum#set_option"]({
+                                max_width = 50,
+                                pudding = true,
+                        })
+                end
+        },
+
+        ["akinsho/toggleterm.nvim"] = {
+                lazy = true,
+                on_event = "VimEnter",
+                hook_post_source = function ()
+                        require("toggleterm").setup({
+                                size = vim.o.lines / 4,
+                                open_mapping = "<C-t>",
+                                direction = "horizontal"
+                        })
+
+                        vim.api.nvim_create_autocmd("BufEnter", {
+                                callback = function ()
+                                        if vim.o.filetype == "toggleterm" then
+                                                vim.cmd("startinsert")
+                                        end
+                                end
+                        })
                 end
         },
 }
@@ -239,7 +231,7 @@ end
 
 union(pluginlist, treesitter_plugins)
 union(pluginlist, lsp_plugins)
-union(pluginlist, ddc_plugins)
+union(pluginlist, require("configs.ddc"))
 union(pluginlist, ddu_plugins)
 union(pluginlist, snippets_plugins)
 
